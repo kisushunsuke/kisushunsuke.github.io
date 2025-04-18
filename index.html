@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --hero-bg: #FFE4E1; /* 薄いピンク */
+            --research-bg: #E6F3FF; /* 薄い水色 */
+            --team-bg: #FFF5E6; /* 薄いオレンジ */
+            --news-bg: #F0FFF0; /* 薄い黄緑 */
+            --blog-bg: #00BFFF; /* シアン */
+            --facilities-bg: #E6E6FA; /* 薄い紫 */
+            --gallery-bg: #FFF0F5; /* 薄いピンク */
+            --calendar-bg: #FFE4B5; /* 薄いオレンジ */
+            --contact-bg: #F0F8FF; /* 薄い水色 */
+            --text-color: #333;
+            --accent-color: #FF69B4; /* ピンク */
+            --secondary-accent: #87CEEB; /* 水色 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to left, rgba(255,228,225,0.9), rgba(255,0,255,0.7)), url('https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .research-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .research-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .research-card-content {
+            padding: 1.5rem;
+        }
+
+        .research-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .team-section {
+            background-color: var(--team-bg);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .contact-section {
+            background-color: var(--contact-bg);
+            margin-top: 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .news-section {
+            background-color: var(--news-bg);
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .news-date {
+            color: var(--secondary-accent);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-section {
+            background-color: #00BFFF;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--secondary-accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publications-section {
+            background-color: var(--research-bg);
+            padding: 3rem 2rem;
+        }
+
+        .publications-list {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .publication-title {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-journal {
+            color: var(--secondary-accent);
+        }
+
+        .member-login {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        .member-login button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .member-login button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        .research-section {
+            background-color: #FFF5E6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M20,20 L180,20 L180,180 L20,180 Z' fill='none' stroke='%23CCCCCC' stroke-width='1'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M40,40 C60,20 140,20 160,40 C180,60 180,140 160,160 C140,180 60,180 40,160 C20,140 20,60 40,40 Z' fill='none' stroke='%23CCCCCC' stroke-width='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .research-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .see-more-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .see-more-btn:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .facilities-section {
+            background-color: var(--facilities-bg);
+        }
+
+        .gallery-section {
+            background-color: var(--gallery-bg);
+        }
+
+        .calendar-section {
+            background-color: var(--calendar-bg);
+        }
+    </style>
+</head>
+<body>
+    <div class="member-login">
+        <button onclick="showLoginForm()">メンバーログイン</button>
+    </div>
+
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">加地研究室</div>
+            <div class="nav-links">
+                <a href="#home">ホーム</a>
+                <a href="#research">研究内容</a>
+                <a href="#team">メンバー</a>
+                <a href="#facilities">研究設備</a>
+                <a href="#gallery">写真ギャラリー</a>
+                <a href="#calendar">イベント</a>
+                <a href="#news">ニュース</a>
+                <a href="#blog">ブログ</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>加地研究室</h1>
+            <p>生命科学の最前線で活躍する研究者を育成</p>
+            <a href="#research" class="btn">研究内容を見る</a>
+        </div>
+    </section>
+
+    <section id="research" class="section research-section">
+        <div class="research-content">
+            <div class="section-title">
+                <h2>研究内容</h2>
+                <p>私たちの研究室で取り組んでいる研究テーマ</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究1">
+                    <div class="research-card-content">
+                        <h3>分子生物学研究</h3>
+                        <p>遺伝子発現制御機構の解明とその応用研究</p>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究2">
+                    <div class="research-card-content">
+                        <h3>細胞生物学研究</h3>
+                        <p>細胞内シグナル伝達機構の解析と制御</p>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究3">
+                    <div class="research-card-content">
+                        <h3>バイオインフォマティクス</h3>
+                        <p>大規模データ解析と生命現象のモデル化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section team-section">
+        <div class="section-title">
+            <h2>スタッフ</h2>
+            <p>研究室の教員紹介</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="教授">
+                <h3>加地 範匡 (Noritada Kaji)</h3>
+                <p>教授</p>
+                <p>Ph.D.</p>
+                <p>研究室: West3 Room 403</p>
+                <p>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="准教授">
+                <h3>財津 慎一 (Shinichi Zaitsu)</h3>
+                <p>准教授</p>
+                <p>Ph.D.</p>
+                <p>研究室: West3 Room 402</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="助教">
+                <h3>梁 逸偉 (Iat Wai Leong)</h3>
+                <p>助教</p>
+                <p>Ph.D.</p>
+                <p>研究室: West3 Room 410</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="file:///C:/Users/kisus/OneDrive/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97/HTML/Html/members.html" class="see-more-btn">さらに見る</a>
+        </div>
+    </section>
+
+    <section id="facilities" class="section facilities-section">
+        <div class="section-title">
+            <h2>研究設備</h2>
+            <p>最先端の研究設備と技術</p>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="共焦点顕微鏡">
+                <div class="facility-content">
+                    <h3>共焦点顕微鏡システム</h3>
+                    <p>高解像度の細胞イメージングを可能にする最先端の顕微鏡システム</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="質量分析装置">
+                <div class="facility-content">
+                    <h3>質量分析装置</h3>
+                    <p>タンパク質や代謝物の高精度分析を可能にする最新の質量分析装置</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="次世代シーケンサー">
+                <div class="facility-content">
+                    <h3>次世代シーケンサー</h3>
+                    <p>大規模なゲノム解析を可能にする高性能シーケンサー</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery-section">
+        <div class="section-title">
+            <h2>写真ギャラリー</h2>
+            <p>研究室の日常と研究活動の様子</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="実験風景">
+                <div class="gallery-caption">細胞培養実験の様子</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="学会発表">
+                <div class="gallery-caption">国際学会での発表</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究室風景">
+                <div class="gallery-caption">研究室の日常</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="セミナー">
+                <div class="gallery-caption">研究セミナーの様子</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendar" class="section calendar-section">
+        <div class="section-title">
+            <h2>イベントカレンダー</h2>
+            <p>研究室の予定とイベント</p>
+        </div>
+        <div class="calendar-container">
+            <div class="calendar-grid">
+                <div class="calendar-item">
+                    <div class="calendar-date">2024年4月15日</div>
+                    <h3>研究室セミナー</h3>
+                    <p>ゲストスピーカーによる特別講演</p>
+                </div>
+                <div class="calendar-item">
+                    <div class="calendar-date">2024年4月20日</div>
+                    <h3>学会発表</h3>
+                    <p>日本バイオサイエンス学会での発表</p>
+                </div>
+                <div class="calendar-item">
+                    <div class="calendar-date">2024年5月1日</div>
+                    <h3>研究室旅行</h3>
+                    <p>研究合宿と親睦会</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="section news-section">
+        <div class="section-title">
+            <h2>ニュース</h2>
+            <p>研究室の最新情報</p>
+        </div>
+        <div class="news-container">
+            <div class="news-item">
+                <div class="news-date">2024年4月1日</div>
+                <h3>研究成果がNature Communications誌に掲載されました</h3>
+                <p>細胞内シグナル伝達機構に関する新たな発見についての論文が掲載されました。</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2024年3月25日</div>
+                <h3>修士論文発表会で優秀賞を受賞</h3>
+                <p>当研究室の学生が修士論文発表会で優秀賞を受賞しました。</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">2024年3月1日</div>
+                <h3>国際学会で招待講演</h3>
+                <p>教授が国際バイオサイエンス学会で招待講演を行いました。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section blog-section">
+        <div class="section-title">
+            <h2>ブログ</h2>
+            <p>研究室の日常と研究活動</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究風景">
+                <div class="blog-content">
+                    <div class="blog-date">2024年3月27日</div>
+                    <h3>研究室での4年間</h3>
+                    <p>修士課程を修了した学生による研究室での経験談</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="学会発表">
+                <div class="blog-content">
+                    <div class="blog-date">2024年3月6日</div>
+                    <h3>国際学会での発表</h3>
+                    <p>初めての国際学会発表の経験と学び</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="section-title">
+            <h2>お問い合わせ</h2>
+            <p>研究室へのお問い合わせはこちらから</p>
+        </div>
+        <div class="contact-container">
+            <div>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>〒123-4567 東京都渋谷区○○町1-2-3</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <p>03-1234-5678</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <p>contact@bioscience-lab.example.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 加地研究室 All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ナビゲーションの固定
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+            } else {
+                navbar.style.background = 'white';
+            }
+        });
+
+        function toggleLanguage() {
+            // 言語切り替えの実装
+            const elements = document.querySelectorAll('[data-lang-ja], [data-lang-en]');
+            elements.forEach(element => {
+                if (element.style.display === 'none') {
+                    element.style.display = 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        function showLoginForm() {
+            // メンバーログインフォームの表示
+            const loginForm = document.createElement('div');
+            loginForm.innerHTML = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                    background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h3>メンバーログイン</h3>
+                    <form>
+                        <div style="margin-bottom: 1rem;">
+                            <label>ユーザーID:</label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label>パスワード:</label>
+                            <input type="password" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <button type="submit" style="background: var(--accent-color); color: white; 
+                            border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                            ログイン
+                        </button>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(loginForm);
+        }
+    </script>
+</body>
+</html>

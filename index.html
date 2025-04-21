@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+gennzqai<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,6 @@
             --blog-bg: #00BFFF; /* シアン */
             --facilities-bg: #E6E6FA; /* 薄い紫 */
             --gallery-bg: #FFF0F5; /* 薄いピンク */
-            --calendar-bg: #FFE4B5; /* 薄いオレンジ */
             --contact-bg: #F0F8FF; /* 薄い水色 */
             --text-color: #333;
             --accent-color: #FF69B4; /* ピンク */
@@ -50,44 +49,181 @@
             justify-content: flex-start;
             align-items: center;
             padding-left: 2rem;
+            padding-right: 12rem; /* 言語切り替えボタンのためのスペースを確保 */
         }
 
         .logo {
             color: var(--accent-color);
             font-size: 1.5rem;
             font-weight: bold;
+            margin-right: 2rem; /* ロゴとナビゲーションリンクの間隔を調整 */
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
-            margin-left: 2rem;
+            gap: 0.5rem; /* リンク間の間隔を調整 */
+            margin-left: 0; /* 左マージンを削除 */
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            background-color: white;
         }
 
         .nav-links a:hover {
-            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ホームページのリンク */
+        .nav-links a[href="index.html"],
+        .nav-links a[href="index.html#home"] {
+            background-color: var(--hero-bg);
+        }
+
+        /* 研究内容のリンク */
+        .nav-links a[href="index.html#research"],
+        .nav-links a[href="research.html"] {
+            background-color: var(--research-bg);
+        }
+
+        /* メンバーのリンク */
+        .nav-links a[href="members.html"],
+        .nav-links a[href="index.html#team"] {
+            background-color: var(--team-bg);
+        }
+
+        /* 研究設備のリンク */
+        .nav-links a[href="index.html#facilities"],
+        .nav-links a[href="facilities.html"] {
+            background-color: var(--facilities-bg);
+        }
+
+        /* 写真ギャラリーのリンク */
+        .nav-links a[href="gallery.html"] {
+            background-color: var(--gallery-bg);
+        }
+
+        /* イベントのリンク */
+        .nav-links a[href="events.html"] {
+            background-color: #FFE4B5;
+        }
+
+        /* ニュースのリンク */
+        .nav-links a[href="news.html"] {
+            background-color: var(--news-bg);
+        }
+
+        /* ブログのリンク */
+        .nav-links a[href="index.html#blog"],
+        .nav-links a[href="blog.html"] {
+            background-color: var(--blog-bg);
+        }
+
+        /* アクセスのリンク */
+        .nav-links a[href="index.html#access"],
+        .nav-links a[href="access.html"] {
+            background-color: #F5F5F5;
+        }
+
+        /* お問い合わせのリンク */
+        .nav-links a[href="index.html#contact"],
+        .nav-links a[href="contact.html"] {
+            background-color: var(--contact-bg);
+        }
+
+        /* その他のリンク用の汎用的なスタイル */
+        .nav-links a[href*="publications"] {
+            background-color: var(--research-bg);
+        }
+
+        .nav-links a[href*="projects"] {
+            background-color: var(--research-bg);
+        }
+
+        .nav-links a[href*="collaborations"] {
+            background-color: var(--research-bg);
+        }
+
+        .nav-links a[href*="alumni"] {
+            background-color: var(--team-bg);
+        }
+
+        .nav-links a[href*="equipment"] {
+            background-color: var(--facilities-bg);
+        }
+
+        .nav-links a[href*="resources"] {
+            background-color: var(--facilities-bg);
         }
 
         .hero {
             height: 100vh;
-            background: linear-gradient(to left, rgba(255,228,225,0.9), rgba(255,0,255,0.7)), url('https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(to left, rgba(255,182,193,0.95), rgba(255,105,180,0.9)), 
+                        /* DNA double helix */
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cpath d='M50,50 C100,75 200,125 250,150 C200,175 100,225 50,250 M250,50 C200,75 100,125 50,150 C100,175 200,225 250,250' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'/%3E%3Cpath d='M50,50 L250,50 M50,150 L250,150 M50,250 L250,250' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='2'/%3E%3C/svg%3E"),
+                        /* Phenylalanine */
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M100,40 L100,80 M80,100 L120,100 M100,80 L80,140 M100,80 L120,140 M90,160 L110,160' fill='none' stroke='rgba(255,255,255,0.25)' stroke-width='2'/%3E%3Ccircle cx='100' cy='120' r='30' fill='none' stroke='rgba(255,255,255,0.25)' stroke-width='2'/%3E%3C/svg%3E"),
+                        /* Molecular bonds */
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ccircle cx='75' cy='75' r='25' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='2'/%3E%3Cpath d='M75,50 L75,30 M75,100 L75,120 M50,75 L30,75 M100,75 L120,75' stroke='rgba(255,255,255,0.2)' stroke-width='2'/%3E%3C/svg%3E"),
+                        url('https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover, 300px 300px, 200px 200px, 150px 150px, cover;
+            background-position: center, center, center, center, center;
+            background-repeat: no-repeat, repeat, repeat, repeat, no-repeat;
+            background-blend-mode: overlay;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--text-color);
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                /* Tryptophan */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M200,100 L200,200 M150,220 L250,220 M200,200 L150,300 M200,200 L250,300' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='2'/%3E%3Cpath d='M170,250 C170,200 230,200 230,250 C230,300 170,300 170,250 Z' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* Histidine */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cpath d='M150,100 L150,150 M120,170 L180,170 M150,150 L120,200 M150,150 L180,200' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='2'/%3E%3Cpath d='M135,185 L165,185 M135,185 L135,215 M165,185 L165,215 M150,215 L150,185' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 400px 400px, 300px 300px;
+            background-repeat: repeat;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                /* Peptide bond */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Cpath d='M150,250 C200,200 300,200 350,250 C300,300 200,300 150,250 Z' fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='2'/%3E%3Cpath d='M250,150 C300,200 300,300 250,350 C200,300 200,200 250,150' fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* Hydrogen bonds */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M150,200 L250,200' stroke='rgba(255,255,255,0.1)' stroke-width='2' stroke-dasharray='5,5'/%3E%3Ccircle cx='150' cy='200' r='10' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3Ccircle cx='250' cy='200' r='10' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 500px 500px, 400px 400px;
+            background-repeat: repeat;
+            opacity: 0.4;
+            z-index: 0;
         }
 
         .hero-content {
+            position: relative;
+            z-index: 1;
             max-width: 800px;
             padding: 2rem;
         }
@@ -105,8 +241,8 @@
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background-color: var(--accent-color);
-            color: white;
+            background-color: #E6F3FF;
+            color: var(--text-color);
             text-decoration: none;
             border-radius: 30px;
             transition: all 0.3s;
@@ -116,7 +252,7 @@
         }
 
         .btn:hover {
-            background-color: #FF1493;
+            background-color: #B3D9FF;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -134,6 +270,10 @@
             font-size: 2.5rem;
             color: var(--accent-color);
             margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1rem;
         }
 
         .research-grid {
@@ -224,6 +364,26 @@
             color: white;
             text-align: center;
             padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-login button {
+            background-color: #1a252f;
+            color: white;
+            border: 1px solid white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .footer-login button:hover {
+            background-color: white;
+            color: #1a252f;
         }
 
         @media (max-width: 768px) {
@@ -238,6 +398,94 @@
             .section {
                 padding: 3rem 1rem;
             }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .research-grid, .team-grid, .blog-grid, .facilities-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .research-card img, .blog-card img, .facility-card img, .gallery-item img {
+                height: 150px;
+            }
+
+            .team-member img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .access-container iframe {
+                width: 100%;
+                height: 300px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .member-login button, .language-switcher button {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .language-switcher {
+                right: 8rem;
+            }
+
+            .btn, .see-more-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .news-item, .publication-item {
+                padding: 1rem;
+            }
+
+            .calendar-item {
+                padding: 1rem;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+            }
+
+            .contact-info i {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .access-container iframe {
+                height: 250px;
+            }
+
+            .language-switcher {
+                right: 6rem;
+            }
+
+            .member-login button, .language-switcher button {
+                padding: 0.2rem 0.6rem;
+                font-size: 0.8rem;
+            }
         }
 
         .news-section {
@@ -249,7 +497,7 @@
             margin: 0 auto;
         }
 
-        .news-item {
+        .news-card {
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #ddd;
@@ -373,7 +621,7 @@
         }
 
         .research-section {
-            background-color: #FFF5E6;
+            background-color: var(--research-bg);
             position: relative;
             overflow: hidden;
         }
@@ -386,10 +634,20 @@
             right: 0;
             bottom: 0;
             background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M20,20 L180,20 L180,180 L20,180 Z' fill='none' stroke='%23CCCCCC' stroke-width='1'/%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M40,40 C60,20 140,20 160,40 C180,60 180,140 160,160 C140,180 60,180 40,160 C20,140 20,60 40,40 Z' fill='none' stroke='%23CCCCCC' stroke-width='1'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            opacity: 0.1;
+                /* ナスフラスコ */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Cpath d='M50,20 C70,20 80,30 80,50 L80,120 C80,130 70,140 50,140 C30,140 20,130 20,120 L20,50 C20,30 30,20 50,20 Z' fill='none' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* 三角フラスコ */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='120' viewBox='0 0 80 120'%3E%3Cpath d='M40,20 L20,100 L60,100 Z' fill='none' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* 試験管 */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='100' viewBox='0 0 40 100'%3E%3Cpath d='M20,20 L20,90' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='5' fill='none' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* ビーカー */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Cpath d='M20,20 L80,20 L90,100 L10,100 Z' fill='none' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3C/svg%3E"),
+                /* メスシリンダー */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='120' viewBox='0 0 60 120'%3E%3Cpath d='M10,20 L50,20 L50,100 L10,100 Z' fill='none' stroke='rgba(0,0,0,0.3)' stroke-width='2'/%3E%3Cpath d='M10,40 L50,40 M10,60 L50,60 M10,80 L50,80' stroke='rgba(0,0,0,0.3)' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 100px 150px, 80px 120px, 40px 100px, 100px 120px, 60px 120px;
+            background-position: 10% 20%, 30% 40%, 50% 60%, 70% 30%, 90% 50%;
+            background-repeat: no-repeat;
+            opacity: 0.3;
             z-index: 0;
         }
 
@@ -426,70 +684,134 @@
             background-color: var(--gallery-bg);
         }
 
-        .calendar-section {
-            background-color: var(--calendar-bg);
+        .access-section {
+            background-color: #F5F5F5;
+        }
+
+        .access-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .access-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .facilities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .facility-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .facility-card p {
+            padding: 1.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="member-login">
-        <button onclick="showLoginForm()">メンバーログイン</button>
-    </div>
-
     <div class="language-switcher">
         <button onclick="toggleLanguage()">English</button>
     </div>
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">加地研究室</div>
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
             <div class="nav-links">
-                <a href="#home">ホーム</a>
-                <a href="#research">研究内容</a>
-                <a href="#team">メンバー</a>
-                <a href="#facilities">研究設備</a>
-                <a href="#gallery">写真ギャラリー</a>
-                <a href="#calendar">イベント</a>
-                <a href="#news">ニュース</a>
-                <a href="#blog">ブログ</a>
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
             </div>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>加地研究室</h1>
-            <p>生命科学の最前線で活躍する研究者を育成</p>
-            <a href="#research" class="btn">研究内容を見る</a>
+            <h1 data-lang-ja>加地研究室</h1>
+            <h1 data-lang-en style="display: none;">Kaji Laboratory</h1>
+            <p data-lang-ja>生命科学の最前線で活躍する研究者を育成</p>
+            <p data-lang-en style="display: none;">Cultivating researchers at the forefront of life sciences</p>
+            <a href="#research" class="btn" data-lang-ja>研究内容を見る</a>
+            <a href="#research" class="btn" data-lang-en style="display: none;">View Research</a>
         </div>
     </section>
 
     <section id="research" class="section research-section">
         <div class="research-content">
             <div class="section-title">
-                <h2>研究内容</h2>
-                <p>私たちの研究室で取り組んでいる研究テーマ</p>
+                <h2 data-lang-ja>研究内容</h2>
+                <h2 data-lang-en style="display: none;">Research</h2>
+                <p data-lang-ja>私たちの研究室で取り組んでいる研究テーマ</p>
+                <p data-lang-en style="display: none;">Research themes we are working on in our laboratory</p>
             </div>
             <div class="research-grid">
                 <div class="research-card">
                     <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究1">
                     <div class="research-card-content">
-                        <h3>分子生物学研究</h3>
-                        <p>遺伝子発現制御機構の解明とその応用研究</p>
+                        <h3 data-lang-ja>分子生物学研究</h3>
+                        <h3 data-lang-en style="display: none;">Molecular Biology Research</h3>
+                        <p data-lang-ja>遺伝子発現制御機構の解明とその応用研究。特に、エピジェネティック制御とRNA代謝の関連性に焦点を当てています。</p>
+                        <p data-lang-en style="display: none;">Elucidation of gene expression control mechanisms and their applications, with a focus on the relationship between epigenetic regulation and RNA metabolism.</p>
                     </div>
                 </div>
                 <div class="research-card">
                     <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究2">
                     <div class="research-card-content">
-                        <h3>細胞生物学研究</h3>
-                        <p>細胞内シグナル伝達機構の解析と制御</p>
+                        <h3 data-lang-ja>細胞生物学研究</h3>
+                        <h3 data-lang-en style="display: none;">Cell Biology Research</h3>
+                        <p data-lang-ja>細胞内シグナル伝達機構の解析と制御。特に、細胞周期制御と細胞分化の分子メカニズムを研究しています。</p>
+                        <p data-lang-en style="display: none;">Analysis and control of intracellular signal transduction mechanisms, particularly focusing on the molecular mechanisms of cell cycle regulation and cell differentiation.</p>
                     </div>
                 </div>
                 <div class="research-card">
                     <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究3">
                     <div class="research-card-content">
-                        <h3>バイオインフォマティクス</h3>
-                        <p>大規模データ解析と生命現象のモデル化</p>
+                        <h3 data-lang-ja>バイオインフォマティクス</h3>
+                        <h3 data-lang-en style="display: none;">Bioinformatics</h3>
+                        <p data-lang-ja>大規模データ解析と生命現象のモデル化。特に、シングルセル解析と機械学習を組み合わせた新規解析手法の開発を行っています。</p>
+                        <p data-lang-en style="display: none;">Large-scale data analysis and modeling of life phenomena, with a focus on developing novel analysis methods combining single-cell analysis and machine learning.</p>
                     </div>
                 </div>
             </div>
@@ -498,178 +820,179 @@
 
     <section id="team" class="section team-section">
         <div class="section-title">
-            <h2>スタッフ</h2>
-            <p>研究室の教員紹介</p>
+            <h2 data-lang-ja>スタッフ</h2>
+            <h2 data-lang-en style="display: none;">Staff</h2>
         </div>
-        <div class="team-grid">
+        <div class="team-container">
             <div class="team-member">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="教授">
-                <h3>加地 範匡 (Noritada Kaji)</h3>
-                <p>教授</p>
-                <p>Ph.D.</p>
-                <p>研究室: West3 Room 403</p>
-                <p>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
+                <img src="images/kaji.jpg" alt="加地 範匡">
+                <h3 data-lang-ja>加地 範匡</h3>
+                <h3 data-lang-en style="display: none;">Noritada Kaji</h3>
+                <p data-lang-ja>教授<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 403号室<br>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
+                <p data-lang-en style="display: none;">Professor<br>Specialty: Bioanalytical Technology Using Micro/Nano Spaces<br>Office: West3 Room 403<br>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
             </div>
             <div class="team-member">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="准教授">
-                <h3>財津 慎一 (Shinichi Zaitsu)</h3>
-                <p>准教授</p>
-                <p>Ph.D.</p>
-                <p>研究室: West3 Room 402</p>
+                <img src="images/zaitsu.jpg" alt="財津 慎一">
+                <h3 data-lang-ja>財津 慎一</h3>
+                <h3 data-lang-en style="display: none;">Shinichi Zaitsu</h3>
+                <p data-lang-ja>准教授<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 402号室<br>Email: zaitsu [at] cstf.kyushu-u.ac.jp</p>
+                <p data-lang-en style="display: none;">Associate Professor<br>Specialty: Bioanalytical Technology Using Micro/Nano Spaces<br>Office: West3 Room 402<br>Email: zaitsu [at] cstf.kyushu-u.ac.jp</p>
             </div>
             <div class="team-member">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="助教">
-                <h3>梁 逸偉 (Iat Wai Leong)</h3>
-                <p>助教</p>
-                <p>Ph.D.</p>
-                <p>研究室: West3 Room 410</p>
+                <img src="images/leong.jpg" alt="梁 逸偉">
+                <h3 data-lang-ja>梁 逸偉</h3>
+                <h3 data-lang-en style="display: none;">Iat Wai Leong</h3>
+                <p data-lang-ja>助教<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 410号室<br>Email: leong [at] cstf.kyushu-u.ac.jp</p>
+                <p data-lang-en style="display: none;">Assistant Professor<br>Specialty: Bioanalytical Technology Using Micro/Nano Spaces<br>Office: West3 Room 410<br>Email: leong [at] cstf.kyushu-u.ac.jp</p>
             </div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="members.html" class="see-more-btn">院生・学部生</a>
+            <a href="members.html" class="see-more-btn" data-lang-ja>院生・学部生一覧</a>
+            <a href="members.html" class="see-more-btn" data-lang-en style="display: none;">Graduate and Undergraduate Students</a>
         </div>
     </section>
 
     <section id="facilities" class="section facilities-section">
         <div class="section-title">
-            <h2>研究設備</h2>
-            <p>最先端の研究設備と技術</p>
+            <h2 data-lang-ja>研究設備</h2>
+            <h2 data-lang-en style="display: none;">Research Facilities</h2>
+            <p data-lang-ja>最先端の研究設備と技術</p>
+            <p data-lang-en style="display: none;">State-of-the-art research equipment and technology</p>
         </div>
-        <div class="facilities-grid">
+        <div class="facilities-container">
             <div class="facility-card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="共焦点顕微鏡">
-                <div class="facility-content">
-                    <h3>共焦点顕微鏡システム</h3>
-                    <p>高解像度の細胞イメージングを可能にする最先端の顕微鏡システム</p>
-                </div>
-            </div>
-            <div class="facility-card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="質量分析装置">
-                <div class="facility-content">
-                    <h3>質量分析装置</h3>
-                    <p>タンパク質や代謝物の高精度分析を可能にする最新の質量分析装置</p>
-                </div>
+                <img src="images/confocal.jpg" alt="Confocal Microscope">
+                <h3 data-lang-ja>共焦点レーザー顕微鏡システム</h3>
+                <h3 data-lang-en style="display: none;">Confocal Microscope System</h3>
+                <p data-lang-ja>高解像度の細胞イメージングが可能な共焦点レーザー顕微鏡システム。3D再構築やタイムラプス撮影にも対応。</p>
+                <p data-lang-en style="display: none;">A confocal microscope system capable of high-resolution cell imaging. Supports 3D reconstruction and time-lapse imaging.</p>
             </div>
             <div class="facility-card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="次世代シーケンサー">
-                <div class="facility-content">
-                    <h3>次世代シーケンサー</h3>
-                    <p>大規模なゲノム解析を可能にする高性能シーケンサー</p>
-                </div>
+                <img src="images/mass_spec.jpg" alt="Mass Spectrometer">
+                <h3 data-lang-ja>質量分析装置</h3>
+                <h3 data-lang-en style="display: none;">Mass Spectrometer</h3>
+                <p data-lang-ja>タンパク質や代謝物の高精度分析が可能な質量分析装置。プロテオーム解析やメタボローム解析に使用。</p>
+                <p data-lang-en style="display: none;">A mass spectrometer for high-precision analysis of proteins and metabolites. Used for proteome and metabolome analysis.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="section gallery-section">
-        <div class="section-title">
-            <h2>写真ギャラリー</h2>
-            <p>研究室の日常と研究活動の様子</p>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="実験風景">
-                <div class="gallery-caption">細胞培養実験の様子</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="学会発表">
-                <div class="gallery-caption">国際学会での発表</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究室風景">
-                <div class="gallery-caption">研究室の日常</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="セミナー">
-                <div class="gallery-caption">研究セミナーの様子</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="calendar" class="section calendar-section">
-        <div class="section-title">
-            <h2>イベントカレンダー</h2>
-            <p>研究室の予定とイベント</p>
-        </div>
-        <div class="calendar-container">
-            <div class="calendar-grid">
-                <div class="calendar-item">
-                    <div class="calendar-date">2024年4月15日</div>
-                    <h3>研究室セミナー</h3>
-                    <p>ゲストスピーカーによる特別講演</p>
-                </div>
-                <div class="calendar-item">
-                    <div class="calendar-date">2024年4月20日</div>
-                    <h3>学会発表</h3>
-                    <p>日本バイオサイエンス学会での発表</p>
-                </div>
-                <div class="calendar-item">
-                    <div class="calendar-date">2024年5月1日</div>
-                    <h3>研究室旅行</h3>
-                    <p>研究合宿と親睦会</p>
-                </div>
+            <div class="facility-card">
+                <img src="images/sequencer.jpg" alt="Next-Generation Sequencer">
+                <h3 data-lang-ja>次世代シーケンサー</h3>
+                <h3 data-lang-en style="display: none;">Next-Generation Sequencer</h3>
+                <p data-lang-ja>大規模ゲノム解析が可能な次世代シーケンサー。RNA-seqやChIP-seqなどの解析に使用。</p>
+                <p data-lang-en style="display: none;">A next-generation sequencer for large-scale genome analysis. Used for RNA-seq, ChIP-seq, and other analyses.</p>
             </div>
         </div>
     </section>
 
     <section id="news" class="section news-section">
         <div class="section-title">
-            <h2>ニュース</h2>
-            <p>研究室の最新情報</p>
+            <h2 data-lang-ja>ニュース</h2>
+            <h2 data-lang-en style="display: none;">News</h2>
+            <p data-lang-ja>研究室の最新情報</p>
+            <p data-lang-en style="display: none;">Latest Updates from the Lab</p>
         </div>
         <div class="news-container">
-            <div class="news-item">
-                <div class="news-date">2024年4月1日</div>
-                <h3>研究成果がNature Communications誌に掲載されました</h3>
-                <p>細胞内シグナル伝達機構に関する新たな発見についての論文が掲載されました。</p>
+            <div class="news-card">
+                <div class="news-date">2024.6.29</div>
+                <h3 data-lang-ja>第61回化学関連支部合同九州大会でのポスター発表</h3>
+                <h3 data-lang-en style="display: none;">Poster Presentation at The 61th Joint Kyushu Meeting of Chemistry-related Branches</h3>
+                <p data-lang-ja>義永君（M1）、前田君（M1）、堤君（M1）が、第61回化学関連支部合同九州大会でポスター発表を行いました。</p>
+                <p data-lang-en style="display: none;">Mr. Yoshinaga, Mr. Maeda, and Mr. Tsutsumi gave a poster presentation at The 61th Joint Kyushu Meeting of Chemistry-related Branches held in Kitakyushu.</p>
             </div>
-            <div class="news-item">
-                <div class="news-date">2024年3月25日</div>
-                <h3>修士論文発表会で優秀賞を受賞</h3>
-                <p>当研究室の学生が修士論文発表会で優秀賞を受賞しました。</p>
+            <div class="news-card">
+                <div class="news-date">2024.6.4</div>
+                <h3 data-lang-ja>新規事務補佐員の着任</h3>
+                <h3 data-lang-en style="display: none;">New Administrative Assistant</h3>
+                <p data-lang-ja>事務補佐員として、寺坂さんが着任しました。</p>
+                <p data-lang-en style="display: none;">Ms. Terasaka has joined as an administrative assistant.</p>
             </div>
-            <div class="news-item">
-                <div class="news-date">2024年3月1日</div>
-                <h3>国際学会で招待講演</h3>
-                <p>教授が国際バイオサイエンス学会で招待講演を行いました。</p>
+            <div class="news-card">
+                <div class="news-date">2024.4.25</div>
+                <h3 data-lang-ja>論文受理のお知らせ</h3>
+                <h3 data-lang-en style="display: none;">Paper Accepted in Talanta Open</h3>
+                <p data-lang-ja>辻君（2022年度修士卒）と堤君（2023年度学士卒）の論文が、Talanta Open誌にアクセプトされました。久保先生・谷川博士（京都大学）との共同研究成果です。</p>
+                <p data-lang-en style="display: none;">The paper titled "An initial study of cell separation based on mechanical properties using a sponge-like monolithic polymer" has been accepted in Talanta Open. This work was conducted in collaboration with Prof. Kubo and Dr. Tanigawa in Kyoto University.</p>
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="news.html" class="see-more-btn" data-lang-ja>もっと見る</a>
+            <a href="news.html" class="see-more-btn" data-lang-en style="display: none;">See More</a>
         </div>
     </section>
 
     <section id="blog" class="section blog-section">
         <div class="section-title">
-            <h2>ブログ</h2>
-            <p>研究室の日常と研究活動</p>
+            <h2 data-lang-ja>ブログ</h2>
+            <h2 data-lang-en style="display: none;">Blog</h2>
+            <p data-lang-ja>研究室の日常と研究活動</p>
+            <p data-lang-en style="display: none;">Daily Life and Research Activities</p>
         </div>
-        <div class="blog-grid">
+        <div class="blog-container">
             <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究風景">
-                <div class="blog-content">
-                    <div class="blog-date">2024年3月27日</div>
-                    <h3>研究室での4年間</h3>
-                    <p>修士課程を修了した学生による研究室での経験談</p>
-                </div>
+                <div class="blog-date">2024-03-01</div>
+                <h3 data-lang-ja>マイクロ流体デバイスの新展開</h3>
+                <h3 data-lang-en style="display: none;">New Developments in Microfluidic Devices</h3>
+                <p data-lang-ja>マイクロ流体デバイスを用いた新しい細胞分離技術の開発について解説します。</p>
+                <p data-lang-en style="display: none;">This post explains the development of new cell separation technology using microfluidic devices.</p>
             </div>
             <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="学会発表">
-                <div class="blog-content">
-                    <div class="blog-date">2024年3月6日</div>
-                    <h3>国際学会での発表</h3>
-                    <p>初めての国際学会発表の経験と学び</p>
-                </div>
+                <div class="blog-date">2024-02-15</div>
+                <h3 data-lang-ja>シングルセル解析の最前線</h3>
+                <h3 data-lang-en style="display: none;">Frontiers of Single Cell Analysis</h3>
+                <p data-lang-ja>最新のシングルセル解析技術とその応用について紹介します。</p>
+                <p data-lang-en style="display: none;">This post introduces the latest single cell analysis technologies and their applications.</p>
             </div>
+            <div class="blog-card">
+                <div class="blog-date">2024-01-20</div>
+                <h3 data-lang-ja>バイオセンサーの新技術</h3>
+                <h3 data-lang-en style="display: none;">New Biosensor Technologies</h3>
+                <p data-lang-ja>高感度バイオセンサーの開発とその医療応用について解説します。</p>
+                <p data-lang-en style="display: none;">This post explains the development of high-sensitivity biosensors and their medical applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="access" class="section access-section">
+        <div class="section-title">
+            <h2 data-lang-ja>アクセス</h2>
+            <h2 data-lang-en style="display: none;">Access</h2>
+            <p data-lang-ja>研究室へのアクセス方法</p>
+            <p data-lang-en style="display: none;">How to Access the Laboratory</p>
+        </div>
+        <div class="access-container">
+            <div class="access-card">
+                <h3 data-lang-ja>所在地</h3>
+                <h3 data-lang-en style="display: none;">Location</h3>
+                <p data-lang-ja>〒819-0395 福岡県福岡市西区元岡744</p>
+                <p data-lang-en style="display: none;">744 Motooka, Nishi-ku, Fukuoka 819-0395, Japan</p>
+                <p data-lang-ja>九州大学 伊都キャンパス ウエスト3号館 4階</p>
+                <p data-lang-en style="display: none;">West 3 Building, 4th Floor, Ito Campus, Kyushu University</p>
+            </div>
+            <div class="access-card">
+                <h3 data-lang-ja>交通アクセス</h3>
+                <h3 data-lang-en style="display: none;">Transportation</h3>
+                <p data-lang-ja>・JR九州「九大学研都市駅」からバスで約15分</p>
+                <p data-lang-en style="display: none;">・About 15 minutes by bus from JR Kyushu "Kyudai Gakken Toshi Station"</p>
+                <p data-lang-ja>・福岡市営地下鉄「姪浜駅」からバスで約30分</p>
+                <p data-lang-en style="display: none;">・About 30 minutes by bus from Fukuoka City Subway "Meinohama Station"</p>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3747675449663!2d130.2143476759662!3d33.595579373332384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541e9dbc5b27ad9%3A0x16e477d0c759bfb!2z5Lmd5bee5aSn5a2m5LyK6YO944Kt44Oj44Oz44OR44K5IOOCpuOCueODiDPlj7fppKg!5e0!3m2!1sja!2sjp!4v1745210320237!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
     <section id="contact" class="section contact-section">
         <div class="section-title">
-            <h2>お問い合わせ</h2>
-            <p>研究室へのお問い合わせはこちらから</p>
+            <h2 data-lang-ja>お問い合わせ</h2>
+            <h2 data-lang-en style="display: none;">Contact</h2>
+            <p data-lang-ja>研究室へのお問い合わせはこちらから</p>
+            <p data-lang-en style="display: none;">Contact the Laboratory</p>
         </div>
         <div class="contact-container">
             <div>
                 <div class="contact-info">
                     <i class="fas fa-map-marker-alt"></i>
-                    <p>〒123-4567 東京都渋谷区○○町1-2-3</p>
+                    <p data-lang-ja>〒123-4567 東京都渋谷区○○町1-2-3</p>
+                    <p data-lang-en style="display: none;">1-2-3 ○○-cho, Shibuya-ku, Tokyo 123-4567</p>
                 </div>
                 <div class="contact-info">
                     <i class="fas fa-phone"></i>
@@ -684,7 +1007,14 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 加地研究室 All Rights Reserved.</p>
+        <div>
+            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
+            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+        </div>
+        <div class="footer-login">
+            <button onclick="showLoginForm()" data-lang-ja>メンバーログイン</button>
+            <button onclick="showLoginForm()" data-lang-en style="display: none;">Member Login</button>
+        </div>
     </footer>
 
     <script>
@@ -709,15 +1039,144 @@
         });
 
         function toggleLanguage() {
-            // 言語切り替えの実装
-            const elements = document.querySelectorAll('[data-lang-ja], [data-lang-en]');
-            elements.forEach(element => {
-                if (element.style.display === 'none') {
-                    element.style.display = 'block';
-                } else {
-                    element.style.display = 'none';
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            // ナビゲーションメニューの切り替え
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            // ボタンのテキストを切り替え
+            const button = document.querySelector('.language-switcher button');
+            button.textContent = isEnglish ? 'English' : '日本語';
+
+            // ロゴの切り替え
+            const logoJa = document.querySelector('.logo[data-lang-ja]');
+            const logoEn = document.querySelector('.logo[data-lang-en]');
+            if (logoJa && logoEn) {
+                logoJa.style.display = isEnglish ? 'block' : 'none';
+                logoEn.style.display = isEnglish ? 'none' : 'block';
+            }
+
+            // メンバーログインフォームの切り替え
+            const loginForm = document.querySelector('div[style*="position: fixed; top: 50%"]');
+            if (loginForm) {
+                const formElementsJa = loginForm.querySelectorAll('[data-lang-ja]');
+                const formElementsEn = loginForm.querySelectorAll('[data-lang-en]');
+                
+                formElementsJa.forEach(el => {
+                    el.style.display = isEnglish ? 'block' : 'none';
+                });
+                
+                formElementsEn.forEach(el => {
+                    el.style.display = isEnglish ? 'none' : 'block';
+                });
+            }
+
+            // サインアップフォームの切り替え
+            const signUpForm = document.querySelector('div[style*="position: fixed; top: 50%"]');
+            if (signUpForm) {
+                const formElementsJa = signUpForm.querySelectorAll('[data-lang-ja]');
+                const formElementsEn = signUpForm.querySelectorAll('[data-lang-en]');
+                
+                formElementsJa.forEach(el => {
+                    el.style.display = isEnglish ? 'block' : 'none';
+                });
+                
+                formElementsEn.forEach(el => {
+                    el.style.display = isEnglish ? 'none' : 'block';
+                });
+            }
+
+            // セクションタイトルの切り替え
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(section => {
+                const titleJa = section.querySelector('[data-lang-ja]');
+                const titleEn = section.querySelector('[data-lang-en]');
+                const descJa = section.querySelector('p[data-lang-ja]');
+                const descEn = section.querySelector('p[data-lang-en]');
+
+                if (titleJa && titleEn) {
+                    titleJa.style.display = isEnglish ? 'block' : 'none';
+                    titleEn.style.display = isEnglish ? 'none' : 'block';
+                }
+
+                if (descJa && descEn) {
+                    descJa.style.display = isEnglish ? 'block' : 'none';
+                    descEn.style.display = isEnglish ? 'none' : 'block';
                 }
             });
+
+            // 研究カードの切り替え
+            const researchCards = document.querySelectorAll('.research-card');
+            researchCards.forEach(card => {
+                const titleJa = card.querySelector('h3[data-lang-ja]');
+                const titleEn = card.querySelector('h3[data-lang-en]');
+                const descJa = card.querySelector('p[data-lang-ja]');
+                const descEn = card.querySelector('p[data-lang-en]');
+
+                if (titleJa && titleEn) {
+                    titleJa.style.display = isEnglish ? 'block' : 'none';
+                    titleEn.style.display = isEnglish ? 'none' : 'block';
+                }
+
+                if (descJa && descEn) {
+                    descJa.style.display = isEnglish ? 'block' : 'none';
+                    descEn.style.display = isEnglish ? 'none' : 'block';
+                }
+            });
+
+            // ブログカードの切り替え
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                const titleJa = card.querySelector('h3[data-lang-ja]');
+                const titleEn = card.querySelector('h3[data-lang-en]');
+                const descJa = card.querySelector('p[data-lang-ja]');
+                const descEn = card.querySelector('p[data-lang-en]');
+
+                if (titleJa && titleEn) {
+                    titleJa.style.display = isEnglish ? 'block' : 'none';
+                    titleEn.style.display = isEnglish ? 'none' : 'block';
+                }
+
+                if (descJa && descEn) {
+                    descJa.style.display = isEnglish ? 'block' : 'none';
+                    descEn.style.display = isEnglish ? 'none' : 'block';
+                }
+            });
+
+            // ニュースセクションの切り替え
+            const newsItems = document.querySelectorAll('.news-card');
+            newsItems.forEach(item => {
+                const titleJa = item.querySelector('h3[data-lang-ja]');
+                const titleEn = item.querySelector('h3[data-lang-en]');
+                const descJa = item.querySelector('p[data-lang-ja]');
+                const descEn = item.querySelector('p[data-lang-en]');
+
+                if (titleJa && titleEn) {
+                    titleJa.style.display = isEnglish ? 'block' : 'none';
+                    titleEn.style.display = isEnglish ? 'none' : 'block';
+                }
+
+                if (descJa && descEn) {
+                    descJa.style.display = isEnglish ? 'block' : 'none';
+                    descEn.style.display = isEnglish ? 'none' : 'block';
+                }
+            });
+
+            // フッターの切り替え
+            const footerJa = document.querySelector('footer p[data-lang-ja]');
+            const footerEn = document.querySelector('footer p[data-lang-en]');
+            if (footerJa && footerEn) {
+                footerJa.style.display = isEnglish ? 'block' : 'none';
+                footerEn.style.display = isEnglish ? 'none' : 'block';
+            }
         }
 
         function showLoginForm() {
@@ -726,24 +1185,109 @@
             loginForm.innerHTML = `
                 <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
                     background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
-                    <h3>メンバーログイン</h3>
+                    <div style="position: absolute; top: 10px; right: 10px;">
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                            style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">
+                            ✕
+                        </button>
+                    </div>
+                    <h3 data-lang-ja>メンバーログイン</h3>
+                    <h3 data-lang-en style="display: none;">Member Login</h3>
                     <form>
                         <div style="margin-bottom: 1rem;">
-                            <label>ユーザーID:</label>
+                            <label data-lang-ja>ユーザーID:</label>
+                            <label data-lang-en style="display: none;">User ID:</label>
                             <input type="text" style="width: 100%; padding: 0.5rem;">
                         </div>
                         <div style="margin-bottom: 1rem;">
-                            <label>パスワード:</label>
+                            <label data-lang-ja>パスワード:</label>
+                            <label data-lang-en style="display: none;">Password:</label>
                             <input type="password" style="width: 100%; padding: 0.5rem;">
                         </div>
-                        <button type="submit" style="background: var(--accent-color); color: white; 
-                            border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
-                            ログイン
-                        </button>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <button type="submit" style="background: var(--accent-color); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;"
+                                data-lang-ja>ログイン</button>
+                            <button type="submit" style="background: var(--accent-color); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; display: none;"
+                                data-lang-en>Login</button>
+                            <button type="button" onclick="showSignUpForm()" style="background: var(--secondary-accent); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;"
+                                data-lang-ja>新規登録</button>
+                            <button type="button" onclick="showSignUpForm()" style="background: var(--secondary-accent); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; display: none;"
+                                data-lang-en>Sign Up</button>
+                        </div>
                     </form>
                 </div>
             `;
             document.body.appendChild(loginForm);
+        }
+
+        function showSignUpForm() {
+            // 既存のログインフォームを削除
+            const existingForm = document.querySelector('div[style*="position: fixed; top: 50%"]');
+            if (existingForm) {
+                existingForm.remove();
+            }
+
+            // サインアップフォームの表示
+            const signUpForm = document.createElement('div');
+            signUpForm.innerHTML = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                    background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <div style="position: absolute; top: 10px; right: 10px;">
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                            style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color);">
+                            ✕
+                        </button>
+                    </div>
+                    <h3 data-lang-ja>新規登録</h3>
+                    <h3 data-lang-en style="display: none;">Sign Up</h3>
+                    <form>
+                        <div style="margin-bottom: 1rem;">
+                            <label data-lang-ja>氏名:</label>
+                            <label data-lang-en style="display: none;">Full Name:</label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label data-lang-ja>メールアドレス:</label>
+                            <label data-lang-en style="display: none;">Email:</label>
+                            <input type="email" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label data-lang-ja>ユーザーID:</label>
+                            <label data-lang-en style="display: none;">User ID:</label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label data-lang-ja>パスワード:</label>
+                            <label data-lang-en style="display: none;">Password:</label>
+                            <input type="password" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label data-lang-ja>パスワード（確認）:</label>
+                            <label data-lang-en style="display: none;">Confirm Password:</label>
+                            <input type="password" style="width: 100%; padding: 0.5rem;">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <button type="submit" style="background: var(--accent-color); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;"
+                                data-lang-ja>登録</button>
+                            <button type="submit" style="background: var(--accent-color); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; display: none;"
+                                data-lang-en>Register</button>
+                            <button type="button" onclick="showLoginForm()" style="background: var(--secondary-accent); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;"
+                                data-lang-ja>ログインに戻る</button>
+                            <button type="button" onclick="showLoginForm()" style="background: var(--secondary-accent); color: white; 
+                                border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; display: none;"
+                                data-lang-en>Back to Login</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(signUpForm);
         }
     </script>
 </body>

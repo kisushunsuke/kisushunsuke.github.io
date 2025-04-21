@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真ギャラリー - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+            --gallery-bg: #E0F2F1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+            padding-right: 12rem;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a[href="index.html"] {
+            background-color: #FFE4E1;
+        }
+
+        .nav-links a[href="index.html#research"] {
+            background-color: #E6F3FF;
+        }
+
+        .nav-links a[href="index.html#team"] {
+            background-color: #FFF5E6;
+        }
+
+        .nav-links a[href="index.html#facilities"] {
+            background-color: #E6E6FA;
+        }
+
+        .nav-links a[href="gallery.html"] {
+            background-color: #E0F2F1;
+        }
+
+        .nav-links a[href="index.html#calendar"] {
+            background-color: #FFE4B5;
+        }
+
+        .nav-links a[href="index.html#news"] {
+            background-color: #F0FFF0;
+        }
+
+        .nav-links a[href="index.html#blog"] {
+            background-color: #00BFFF;
+        }
+
+        .nav-links a[href="index.html#access"] {
+            background-color: #F5F5F5;
+        }
+
+        .nav-links a[href="index.html#contact"] {
+            background-color: #F0F8FF;
+        }
+
+        .gallery-section {
+            background-color: var(--gallery-bg);
+            padding: 8rem 2rem 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 250px;
+            }
+
+            .section-title h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="gallery-section">
+        <div class="section-title">
+            <h1 data-lang-ja>写真ギャラリー</h1>
+            <h1 data-lang-en style="display: none;">Photo Gallery</h1>
+            <p data-lang-ja>研究室の日常と研究活動の様子</p>
+            <p data-lang-en style="display: none;">Daily life and research activities in the laboratory</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="実験風景">
+                <div class="gallery-caption" data-lang-ja>共焦点顕微鏡による細胞観察</div>
+                <div class="gallery-caption" data-lang-en style="display: none;">Cell Observation with Confocal Microscope</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="学会発表">
+                <div class="gallery-caption" data-lang-ja>国際学会でのポスター発表</div>
+                <div class="gallery-caption" data-lang-en style="display: none;">Poster Presentation at International Conference</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="研究室風景">
+                <div class="gallery-caption" data-lang-ja>新入生歓迎会の様子</div>
+                <div class="gallery-caption" data-lang-en style="display: none;">New Student Welcome Party</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139cffb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="セミナー">
+                <div class="gallery-caption" data-lang-ja>研究室セミナーの様子</div>
+                <div class="gallery-caption" data-lang-en style="display: none;">Laboratory Seminar</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
+            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            const button = document.querySelector('.language-switcher button');
+            button.textContent = isEnglish ? 'English' : '日本語';
+
+            const logoJa = document.querySelector('.logo[data-lang-ja]');
+            const logoEn = document.querySelector('.logo[data-lang-en]');
+            if (logoJa && logoEn) {
+                logoJa.style.display = isEnglish ? 'block' : 'none';
+                logoEn.style.display = isEnglish ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html> 

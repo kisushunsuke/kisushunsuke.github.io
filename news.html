@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+            --news-bg: #F0FFF0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+            padding-right: 12rem;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a[href="index.html"] {
+            background-color: #FFE4E1;
+        }
+
+        .nav-links a[href="index.html#research"] {
+            background-color: #E6F3FF;
+        }
+
+        .nav-links a[href="index.html#team"] {
+            background-color: #FFF5E6;
+        }
+
+        .nav-links a[href="index.html#facilities"] {
+            background-color: #E6E6FA;
+        }
+
+        .nav-links a[href="gallery.html"] {
+            background-color: #E0F2F1;
+        }
+
+        .nav-links a[href="index.html#calendar"] {
+            background-color: #FFE4B5;
+        }
+
+        .nav-links a[href="news.html"] {
+            background-color: #F0FFF0;
+        }
+
+        .nav-links a[href="index.html#blog"] {
+            background-color: #00BFFF;
+        }
+
+        .nav-links a[href="index.html#access"] {
+            background-color: #F5F5F5;
+        }
+
+        .nav-links a[href="index.html#contact"] {
+            background-color: #F0F8FF;
+        }
+
+        .news-section {
+            background-color: var(--news-bg);
+            padding: 8rem 2rem 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .news-date {
+            color: var(--secondary-accent);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .news-title {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .news-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .section-title h1 {
+                font-size: 2rem;
+            }
+
+            .news-card {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="news-section">
+        <div class="section-title">
+            <h1 data-lang-ja>ニュース</h1>
+            <h1 data-lang-en style="display: none;">News</h1>
+            <p data-lang-ja>研究室の最新情報</p>
+            <p data-lang-en style="display: none;">Latest Updates from the Lab</p>
+        </div>
+        <div class="news-container">
+            <div class="news-card">
+                <div class="news-date">2024.6.29</div>
+                <h3 class="news-title" data-lang-ja>第61回化学関連支部合同九州大会でのポスター発表</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Poster Presentation at The 61th Joint Kyushu Meeting of Chemistry-related Branches</h3>
+                <div class="news-content">
+                    <p data-lang-ja>義永君（M1）、前田君（M1）、堤君（M1）が、第61回化学関連支部合同九州大会でポスター発表を行いました。</p>
+                    <p data-lang-en style="display: none;">Mr. Yoshinaga, Mr. Maeda, and Mr. Tsutsumi gave a poster presentation at The 61th Joint Kyushu Meeting of Chemistry-related Branches held in Kitakyushu.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.6.4</div>
+                <h3 class="news-title" data-lang-ja>新規事務補佐員の着任</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">New Administrative Assistant</h3>
+                <div class="news-content">
+                    <p data-lang-ja>事務補佐員として、寺坂さんが着任しました。</p>
+                    <p data-lang-en style="display: none;">Ms. Terasaka has joined as an administrative assistant.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.4.25</div>
+                <h3 class="news-title" data-lang-ja>論文受理のお知らせ</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Paper Accepted in Talanta Open</h3>
+                <div class="news-content">
+                    <p data-lang-ja>辻君（2022年度修士卒）と堤君（2023年度学士卒）の論文が、Talanta Open誌にアクセプトされました。久保先生・谷川博士（京都大学）との共同研究成果です。</p>
+                    <p data-lang-en style="display: none;">The paper titled "An initial study of cell separation based on mechanical properties using a sponge-like monolithic polymer" has been accepted in Talanta Open. This work was conducted in collaboration with Prof. Kubo and Dr. Tanigawa in Kyoto University.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.4.8</div>
+                <h3 class="news-title" data-lang-ja>新メンバーの配属</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">New Members Join the Lab</h3>
+                <div class="news-content">
+                    <p data-lang-ja>新B4の5名が研究室に配属されました。</p>
+                    <p data-lang-en style="display: none;">Welcome aboard, new members!</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.3.28</div>
+                <h3 class="news-title" data-lang-ja>Baba Conferenceの開催</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Baba Conference Hosted</h3>
+                <div class="news-content">
+                    <p data-lang-ja>Baba Conferenceを主催し、200名余りの先生方、卒業生、企業関係者の皆様にご参加いただきました。多くの方にご参加頂き、感謝申し上げます。</p>
+                    <p data-lang-en style="display: none;">We hosted the Baba Conference, which was attended by over 200 teachers, alumni, and business professionals. We would like to thank the many people who attended.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.3.25</div>
+                <h3 class="news-title" data-lang-ja>学位授与式</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Graduation Ceremony</h3>
+                <div class="news-content">
+                    <p data-lang-ja>学位授与式が挙行され、M2の稲吉君、植本君、郷君、野見山君、山川君、山地君、B4の田中君、堤君、前田君、義永君が門出を迎えました。</p>
+                    <p data-lang-en style="display: none;">The graduation ceremony is held and the six graduates and the four undergraduates have completed their courses.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2024.2.27</div>
+                <h3 class="news-title" data-lang-ja>PITTCON2024での招待講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Invited Lecture at PITTCON2024</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、PITTCON2024にて招待講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave an invited lecture at PITTCON2024.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.12.5</div>
+                <h3 class="news-title" data-lang-ja>IEEE Nanomedでの招待講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Invited Lecture at IEEE Nanomed</h3>
+                <div class="news-content">
+                    <p data-lang-ja>梁先生が、IEEE Nanomedにて招待講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Asst. Prof. Leong gave an invited lecture at IEEE Nanomed.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.11.17</div>
+                <h3 class="news-title" data-lang-ja>NTNUでの招待講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Invited Lecture at National Taiwan Normal University</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、NTNUにて招待講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave an invited lecture at National Taiwan Normal University.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.10.31</div>
+                <h3 class="news-title" data-lang-ja>岐阜薬科大学での講義</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Lecture at Gifu Pharmaceutical University</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、岐阜薬科大学で講義を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave a lecture at Gifu Pharmaceutical University.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.10.15</div>
+                <h3 class="news-title" data-lang-ja>uTAS2023でのポスター発表</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Poster Presentation at uTAS2023</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生と野見山君（M2）が、uTAS2023でポスター発表を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji and Mr. Nomiyama (M2) gave a poster presentation at uTAS2023.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.10.10</div>
+                <h3 class="news-title" data-lang-ja>APCE2023での基調講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Keynote Lecture at APCE2023</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、APCE2023にて招待講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave a keynote lecture at APCE2023.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.10.2</div>
+                <h3 class="news-title" data-lang-ja>梁先生の着任</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Welcome Asst. Prof. Iat Wai Leong</h3>
+                <div class="news-content">
+                    <p data-lang-ja>梁先生が着任されました。</p>
+                    <p data-lang-en style="display: none;">Welcome aboard, Asst. Prof. Iat Wai Leong!</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.8.16</div>
+                <h3 class="news-title" data-lang-ja>論文掲載のお知らせ</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Paper Published in Scientific Reports</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生の論文が、Scientific reports誌に掲載されました。渡慶次先生（北海道大学）と馬場先生（名古屋大学）との共同研究成果です。</p>
+                    <p data-lang-en style="display: none;">The paper written by Prof. Kaji has been published in Scientific reports. This work was conducted in collaboration with Prof. Toekshi in Hokkaido University and Prof. Baba in Nagoya University.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.8.1</div>
+                <h3 class="news-title" data-lang-ja>出前講義の実施</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Lecture at Fukuoka Jyoto High School</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、福岡工業大学附属 城東高等学校で出前講義を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave a lecture at Fukuoka Jyoto High School.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.7.28</div>
+                <h3 class="news-title" data-lang-ja>第41回夏期セミナーでのポスター発表</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Poster Presentation at The 41th Summer Seminar</h3>
+                <div class="news-content">
+                    <p data-lang-ja>前田君（B4）と義永君（B4）が、九州分析化学若手の会 第41回夏期セミナーでポスター発表を行いました。</p>
+                    <p data-lang-en style="display: none;">Mr. Maeda and Mr. Yoshinaga gave a poster presentation at The 41th Summer seminar held in Kitakyushu.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.7.7</div>
+                <h3 class="news-title" data-lang-ja>論文受理のお知らせ</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Paper Accepted in Journal of Robotics and Mechatronics</h3>
+                <div class="news-content">
+                    <p data-lang-ja>岸本君（2022年度修士卒）の論文が、Journal of Robotics and Mechatronics誌にアクセプトされました。中西先生・中島先生（熊本大学）との共同研究成果です。</p>
+                    <p data-lang-en style="display: none;">The paper titled "Development of a microfluidic ion current measurement system for a single microplastic detection" has been accepted in Journal of Robotics and Mechatronics. This work was conducted in collaboration with Profs. Nakanishi and Nakashima in Kumamoto University.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.7.1</div>
+                <h3 class="news-title" data-lang-ja>第60回化学関連支部合同九州大会でのポスター発表</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Poster Presentation at The 60th Joint Kyushu Meeting</h3>
+                <div class="news-content">
+                    <p data-lang-ja>番野君（M1）が、第60回化学関連支部合同九州大会でポスター発表を行いました。</p>
+                    <p data-lang-en style="display: none;">Mr. Banno gave a poster presentation at The 60th Joint Kyushu Meeting of Chemistry-related Branches held in Kitakyushu.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.6.8</div>
+                <h3 class="news-title" data-lang-ja>論文掲載のお知らせ</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Paper Published in Molecules</h3>
+                <div class="news-content">
+                    <p data-lang-ja>番野君（M1）の論文が、Molecules誌に掲載されました。</p>
+                    <p data-lang-en style="display: none;">The paper titled "Quantitative Evaluation of Interleukin-4 by Immunowall Devices Made of Gelatin Methacryloyl Hydrogel" has been published in Molecules.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.5.21</div>
+                <h3 class="news-title" data-lang-ja>分析化学討論会での依頼講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Invited Presentation at JSAC Annual Meeting 2023</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、分析化学討論会（富山）にて依頼講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave an invited presentation at JSAC Annual Meeting 2023 held in Toyama.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.5.14</div>
+                <h3 class="news-title" data-lang-ja>CHEMINAS47でのポスター発表</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Poster Presentation at CHEMINAS47</h3>
+                <div class="news-content">
+                    <p data-lang-ja>菊谷君(M1)が、CHEMINAS47（仙台）でポスター発表を行いました。</p>
+                    <p data-lang-en style="display: none;">Mr. Kikutani gave a poster presentation at CHEMINAS47 held in Sendai.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.4.5</div>
+                <h3 class="news-title" data-lang-ja>新メンバーの配属</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">New Members Join the Lab</h3>
+                <div class="news-content">
+                    <p data-lang-ja>新B4の5名が研究室に配属されました。</p>
+                    <p data-lang-en style="display: none;">Welcome aboard, new members!</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.3.31</div>
+                <h3 class="news-title" data-lang-ja>メンバーの異動</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Member Transitions</h3>
+                <div class="news-content">
+                    <p data-lang-ja>Nadineさん（特別聴講学生）がドイツに帰国されました。末吉さん（技術補佐員）が退職されました。</p>
+                    <p data-lang-en style="display: none;">Ms. Nadine has returned to Germany and Ms. Sueyoshi has resigned. Thank you for your contribution and Good Luck!</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.3.21</div>
+                <h3 class="news-title" data-lang-ja>Pittcon2013での招待講演</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Invited Presentation at Pittcon2013</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、Pittcon2013 (Philladelphia)にて招待講演を行いました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji gave an invited presentation at Pittcon2013 held in Philladelphia.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.3.20</div>
+                <h3 class="news-title" data-lang-ja>学位授与式</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Graduation Ceremony</h3>
+                <div class="news-content">
+                    <p data-lang-ja>学位授与式が挙行され、M2の一番ヶ瀬さん、榎本さん、岸本君、辻君、本田君、B4の岡君、奥野君、菊谷君、三田君、番野君が門出を迎えました。</p>
+                    <p data-lang-en style="display: none;">The graduation ceremony is held and the four graduates and the five undergraduates have completed their courses.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.3.1</div>
+                <h3 class="news-title" data-lang-ja>Analytical Sciences誌のEditor in Chief就任</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Appointed Editor in Chief of Analytical Sciences</h3>
+                <div class="news-content">
+                    <p data-lang-ja>加地先生が、Analytical Sciences誌のEditor in Chiefに就任されました。</p>
+                    <p data-lang-en style="display: none;">Prof. Kaji has been appointed Editor in Chief of Analytical Sciences.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2023.3.1</div>
+                <h3 class="news-title" data-lang-ja>論文掲載のお知らせ</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">Paper Published in Analytical Sciences</h3>
+                <div class="news-content">
+                    <p data-lang-ja>鬼塚君（2020年度修士卒）と藤田君（2021年度修士卒）の共著論文が、Analytical Sciences誌に掲載されました。</p>
+                    <p data-lang-en style="display: none;">The paper titled "Antioxidants encapsulated milk-derived Exosomes for functional food development" has been published in Analytical Sciences.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">2022.11.16</div>
+                <h3 class="news-title" data-lang-ja>CHEMINAS 46の開催報告</h3>
+                <h3 class="news-title" data-lang-en style="display: none;">CHEMINAS 46 Successfully Completed</h3>
+                <div class="news-content">
+                    <p data-lang-ja>CHEMINAS 46（11月14日(月)～16日（水）＠アスティ徳島）は、146件のポスター発表を含めて合計154件の発表、ならびに235名の参加者を集めて、無事成功裏に終了しました。多くの方にご参加頂き、感謝申し上げます。</p>
+                    <p data-lang-en style="display: none;">CHEMINAS 46 (Nov. 14 - 16 at ASTY Tokushima) was successfully finished with a total of 154 presentations including 146 posters and 235 participants. We would like to thank the many people who attended.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
+            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            const button = document.querySelector('.language-switcher button');
+            button.textContent = isEnglish ? 'English' : '日本語';
+
+            const logoJa = document.querySelector('.logo[data-lang-ja]');
+            const logoEn = document.querySelector('.logo[data-lang-en]');
+            if (logoJa && logoEn) {
+                logoJa.style.display = isEnglish ? 'block' : 'none';
+                logoEn.style.display = isEnglish ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html> 

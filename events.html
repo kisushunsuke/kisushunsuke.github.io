@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+            --calendar-bg: #FFE4B5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+            padding-right: 12rem;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a[href="index.html"] {
+            background-color: #FFE4E1;
+        }
+
+        .nav-links a[href="index.html#research"] {
+            background-color: #E6F3FF;
+        }
+
+        .nav-links a[href="index.html#team"] {
+            background-color: #FFF5E6;
+        }
+
+        .nav-links a[href="index.html#facilities"] {
+            background-color: #E6E6FA;
+        }
+
+        .nav-links a[href="gallery.html"] {
+            background-color: #E0F2F1;
+        }
+
+        .nav-links a[href="events.html"] {
+            background-color: #FFE4B5;
+        }
+
+        .nav-links a[href="news.html"] {
+            background-color: #F0FFF0;
+        }
+
+        .nav-links a[href="index.html#blog"] {
+            background-color: #00BFFF;
+        }
+
+        .nav-links a[href="index.html#access"] {
+            background-color: #F5F5F5;
+        }
+
+        .nav-links a[href="index.html#contact"] {
+            background-color: #F0F8FF;
+        }
+
+        .events-section {
+            background-color: var(--calendar-bg);
+            padding: 8rem 2rem 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .month-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .month-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .events-list {
+            list-style: none;
+        }
+
+        .event-item {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-left: 3px solid var(--secondary-accent);
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .section-title h1 {
+                font-size: 2rem;
+            }
+
+            .month-card {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="events-section">
+        <div class="section-title">
+            <h1 data-lang-ja>年間行事</h1>
+            <h1 data-lang-en style="display: none;">Annual Events</h1>
+            <p data-lang-ja>研究室の年間スケジュール</p>
+            <p data-lang-en style="display: none;">Laboratory Annual Schedule</p>
+        </div>
+        <div class="events-container">
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>4月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">April</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>親和会</li>
+                    <li class="event-item" data-lang-ja>ソフトボール大会</li>
+                    <li class="event-item" data-lang-en style="display: none;">Fellowship Meeting</li>
+                    <li class="event-item" data-lang-en style="display: none;">Softball Tournament</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>5月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">May</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>CHEMINAS</li>
+                    <li class="event-item" data-lang-ja>分析化学討論会</li>
+                    <li class="event-item" data-lang-ja>新入生歓迎コンパ</li>
+                    <li class="event-item" data-lang-en style="display: none;">CHEMINAS</li>
+                    <li class="event-item" data-lang-en style="display: none;">Analytical Chemistry Symposium</li>
+                    <li class="event-item" data-lang-en style="display: none;">Welcome Party for New Students</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>6月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">June</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>化学関連支部合同九州大会</li>
+                    <li class="event-item" data-lang-en style="display: none;">Joint Kyushu Meeting of Chemistry-related Branches</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>7月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">July</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>ひたすら研究</li>
+                    <li class="event-item" data-lang-en style="display: none;">Research Focus</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>8月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">August</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>中間報告会（M2）</li>
+                    <li class="event-item" data-lang-ja>テーマ説明会（M1）</li>
+                    <li class="event-item" data-lang-ja>大学院入試（M2, B4）</li>
+                    <li class="event-item" data-lang-en style="display: none;">Mid-term Presentation (M2)</li>
+                    <li class="event-item" data-lang-en style="display: none;">Theme Explanation Meeting (M1)</li>
+                    <li class="event-item" data-lang-en style="display: none;">Graduate School Entrance Exam (M2, B4)</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>9月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">September</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>分析化学会年会</li>
+                    <li class="event-item" data-lang-ja>院試お疲れ様会</li>
+                    <li class="event-item" data-lang-ja>大掃除</li>
+                    <li class="event-item" data-lang-en style="display: none;">Annual Meeting of Analytical Chemistry</li>
+                    <li class="event-item" data-lang-en style="display: none;">Graduate Exam Celebration Party</li>
+                    <li class="event-item" data-lang-en style="display: none;">General Cleaning</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>10月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">October</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>microTAS</li>
+                    <li class="event-item" data-lang-ja>研究</li>
+                    <li class="event-item" data-lang-en style="display: none;">microTAS</li>
+                    <li class="event-item" data-lang-en style="display: none;">Research</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>11月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">November</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>CHEMINAS</li>
+                    <li class="event-item" data-lang-ja>ひたすら研究</li>
+                    <li class="event-item" data-lang-en style="display: none;">CHEMINAS</li>
+                    <li class="event-item" data-lang-en style="display: none;">Research Focus</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>12月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">December</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>忘年会</li>
+                    <li class="event-item" data-lang-en style="display: none;">Year-end Party</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>1月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">January</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>ひたすら研究</li>
+                    <li class="event-item" data-lang-en style="display: none;">Research Focus</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>2月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">February</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>修士・学士試問会（M2, B4）</li>
+                    <li class="event-item" data-lang-en style="display: none;">Master's and Bachelor's Thesis Defense (M2, B4)</li>
+                </ul>
+            </div>
+
+            <div class="month-card">
+                <h2 class="month-title" data-lang-ja>3月</h2>
+                <h2 class="month-title" data-lang-en style="display: none;">March</h2>
+                <ul class="events-list">
+                    <li class="event-item" data-lang-ja>化学会年会</li>
+                    <li class="event-item" data-lang-ja>追い出しコンパ</li>
+                    <li class="event-item" data-lang-ja>卒業式</li>
+                    <li class="event-item" data-lang-en style="display: none;">Annual Meeting of Chemical Society</li>
+                    <li class="event-item" data-lang-en style="display: none;">Farewell Party</li>
+                    <li class="event-item" data-lang-en style="display: none;">Graduation Ceremony</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
+            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            const button = document.querySelector('.language-switcher button');
+            button.textContent = isEnglish ? 'English' : '日本語';
+
+            const logoJa = document.querySelector('.logo[data-lang-ja]');
+            const logoEn = document.querySelector('.logo[data-lang-en]');
+            if (logoJa && logoEn) {
+                logoJa.style.display = isEnglish ? 'block' : 'none';
+                logoEn.style.display = isEnglish ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html> 

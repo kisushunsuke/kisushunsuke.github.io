@@ -84,10 +84,6 @@
             background-color: #FFF5E6;
         }
 
-        .nav-links a[href="index.html#facilities"] {
-            background-color: #E6E6FA;
-        }
-
         .nav-links a[href="gallery.html"] {
             background-color: #E0F2F1;
         }
@@ -211,18 +207,14 @@
                 <a href="index.html" data-lang-en style="display: none;">Home</a>
                 <a href="index.html#research" data-lang-ja>研究内容</a>
                 <a href="index.html#research" data-lang-en style="display: none;">Research</a>
-                <a href="index.html#team" data-lang-ja>メンバー</a>
-                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
-                <a href="index.html#facilities" data-lang-ja>研究設備</a>
-                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="members.html" data-lang-ja>メンバー</a>
+                <a href="members.html" data-lang-en style="display: none;">Members</a>
                 <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
                 <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
                 <a href="events.html" data-lang-ja>イベント</a>
                 <a href="events.html" data-lang-en style="display: none;">Events</a>
                 <a href="news.html" data-lang-ja>ニュース</a>
                 <a href="news.html" data-lang-en style="display: none;">News</a>
-                <a href="index.html#blog" data-lang-ja>ブログ</a>
-                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
                 <a href="index.html#access" data-lang-ja>アクセス</a>
                 <a href="index.html#access" data-lang-en style="display: none;">Access</a>
                 <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
@@ -373,35 +365,13 @@
 
     <footer>
         <div>
-            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
-            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+            <p>&copy; 2025 加地研究室 All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script>
-        function toggleLanguage() {
-            const elementsJa = document.querySelectorAll('[data-lang-ja]');
-            const elementsEn = document.querySelectorAll('[data-lang-en]');
-            const isEnglish = elementsJa[0].style.display === 'none';
-            
-            elementsJa.forEach(el => {
-                el.style.display = isEnglish ? 'block' : 'none';
-            });
-            
-            elementsEn.forEach(el => {
-                el.style.display = isEnglish ? 'none' : 'block';
-            });
-
-            const button = document.querySelector('.language-switcher button');
-            button.textContent = isEnglish ? 'English' : '日本語';
-
-            const logoJa = document.querySelector('.logo[data-lang-ja]');
-            const logoEn = document.querySelector('.logo[data-lang-en]');
-            if (logoJa && logoEn) {
-                logoJa.style.display = isEnglish ? 'block' : 'none';
-                logoEn.style.display = isEnglish ? 'none' : 'block';
-            }
-        }
-    </script>
+    <!-- Google Cloud Translation APIのライブラリを読み込み -->
+    <script src="https://www.googleapis.com/translate/v2?key=YOUR_API_KEY_HERE"></script>
+    <!-- 翻訳機能のスクリプトを読み込み -->
+    <script src="js/translator.js"></script>
 </body>
 </html> 

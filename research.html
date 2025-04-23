@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究内容 - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+            --research-bg: #E6F3FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+            padding-right: 12rem;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links a[href="index.html"] {
+            background-color: #FFE4E1;
+        }
+
+        .nav-links a[href="research.html"] {
+            background-color: #E6F3FF;
+        }
+
+        .nav-links a[href="index.html#team"] {
+            background-color: #FFF5E6;
+        }
+
+        .nav-links a[href="gallery.html"] {
+            background-color: #E0F2F1;
+        }
+
+        .nav-links a[href="events.html"] {
+            background-color: #FFE4B5;
+        }
+
+        .nav-links a[href="news.html"] {
+            background-color: #F0FFF0;
+        }
+
+        .nav-links a[href="index.html#blog"] {
+            background-color: #00BFFF;
+        }
+
+        .nav-links a[href="index.html#access"] {
+            background-color: #F5F5F5;
+        }
+
+        .nav-links a[href="index.html#contact"] {
+            background-color: #F0F8FF;
+        }
+
+        .research-section {
+            background-color: var(--research-bg);
+            padding: 8rem 2rem 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .research-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .research-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .research-title {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .research-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .research-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .section-title h1 {
+                font-size: 2rem;
+            }
+
+            .research-card {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="research.html" data-lang-ja>研究内容</a>
+                <a href="research.html" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="research-section">
+        <div class="section-title">
+            <h1 data-lang-ja>研究内容</h1>
+            <h1 data-lang-en style="display: none;">Research</h1>
+            <p data-lang-ja>加地研究室の研究テーマと成果</p>
+            <p data-lang-en style="display: none;">Research Themes and Achievements</p>
+        </div>
+        <div class="research-container">
+            <div class="research-card">
+                <h2 class="research-title" data-lang-ja>研究背景</h2>
+                <h2 class="research-title" data-lang-en style="display: none;">Research Background</h2>
+                <div class="research-content">
+                    <p data-lang-ja>現在、日本人の2人に1人ががんを患い、3人に1人ががんで亡くなっています。今後、高齢化社会が進展するに従って、ますますがんの患者数は増加することが予測され、がんの早期発見・早期治療が強く望まれています。また、がんと同時に、結核をはじめとする再興感染症や薬剤耐性菌といった細菌感染症の問題も顕在化してきており、早期検出法の開発も望まれています。このような時代背景を鑑みると、いかに高感度（少ないがん細胞数）で正確（擬陽性のない）、かつ患者さんに精神的・肉体的負担（採血やバイオプシー）の少ない低・非侵襲的分析法を研究・開発して提供するかが、分析化学者としてのひとつの使命であると考えます。当研究室では、このような社会問題解決のために、ナノバイオテクノロジーを駆使した分析法を開発することで挑んでいきたいと思います。</p>
+                    <p data-lang-en style="display: none;">Currently, one in two Japanese people is diagnosed with cancer, and one in three people die of cancer. It is predicted that the number of cancer patients will increase as the aging society progresses. Early detection and early treatment of cancer is strongly desired. At the same time, bacterial infections, such as tuberculosis and other re-emerging infections and drug-resistant bacteria, are also a problem, the development of early detection techniques of infectious diseases is desired as well as cancer. In view of this background, we believe that development of high sensitive (fewer cancer cells), accurate (no false positives), and minimally or non-invasive analytical techniques that reduce the mental and physical burden on patients accompanying blood collection and biopsy is one of our missions as an analytical chemist. In our laboratory, we are trying to develop analytical techniques based on nanobiotechnology to solve such social problems.</p>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <h2 class="research-title" data-lang-ja>単一細胞・細菌解析法の開発</h2>
+                <h2 class="research-title" data-lang-en style="display: none;">Development of a single cell and bacterium analysis techniques on a chip</h2>
+                <div class="research-content">
+                    <p data-lang-ja>細胞や細菌が有する情報、例えば遺伝子配列情報などは、比較的簡単かつ低コストで分析できる時代になりました。しかしながら、これらはほとんどが細胞などを破壊する破壊分析法であり、再生医療などにおける細胞の品質保証などに適用することはできません。そこで本研究では、細胞を「触って診断」できるようなマイクロ流体デバイスを開発し、非染色・非破壊な単一細胞解析法を開発し、先進医療に貢献する分析技術の創成に取り組んでいます。</p>
+                    <p data-lang-en style="display: none;">Recently, information from cells and bacteria, such as gene sequence information, can be analyzed relatively easily and inexpensively. However, these are mostly destructive analysis techniques that irreversibly destroy cells and other components. Therefore, it is impossible to apply regenerative medicine which requires the quality assurance of stem cells before cell transplantation. In this research, we are developing a microfluidic device that can diagnose cells by "touching" them, with non-staining and non-destructive operation. This single-cell palpation device can create a novel analytical technique that contribute to advanced medical treatment.</p>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <h2 class="research-title" data-lang-ja>人工細胞・細胞外小胞の作製・解析法の開発とバイオ分析・創薬・医療への応用</h2>
+                <h2 class="research-title" data-lang-en style="display: none;">Development of fabrication and analysis techniques of artificial cells and extracellular vesicles and their application to bioanalysis, drug discovery and medicine</h2>
+                <div class="research-content">
+                    <p data-lang-ja>細胞が放出する直径約50 nmから数mmの細胞外小胞（EV）は、起源となる細胞の核酸やタンパク質を含有し、全身の体液中に豊富に存在するため、特にエクソソームが低侵襲に採取可能な新しい疾患バイオマーカーとして期待を集めています。しかしながら、抽出法や評価法などに確立された方法論がない上、heterogeneityの高い物質であるため、新しい解析法が求められています。そこで本研究では、EVの「粒子」としての性質と「内包物」情報を単一EVレベルで検知できるデバイスを開発し、有用なEVだけを回収して医療応用できるデバイス開発を行っています。</p>
+                    <p data-lang-en style="display: none;">Since extracellular vesicles (EVs) sized from 50 nm to a few micrometers in diameter released by the cell contains nucleic acids and proteins and are abundant in body fluids, particularly exosomes which are easy to collect in a minimally invasive manner have attracted much attention as a possible new disease biomarker. However, there are no established methodologies for extraction and evaluation, and moreover, their heterogeneity make it increasingly difficult to analyze. In this research we are developing a new technique to separate and detect EVs based on their properties, and characterize their contents at a single EVs level. After the analysis, recovering techniques for only useful EVs are also developed toward medical applications.</p>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <h2 class="research-title" data-lang-ja>腸内細菌叢研究のためのマイクロ流体デバイス</h2>
+                <h2 class="research-title" data-lang-en style="display: none;">Intestinal microflora analysis on a chip</h2>
+                <div class="research-content">
+                    <p data-lang-ja>私たちの腸内に棲息する無数の細菌たちの機能を活用することで、私たちは健康な生活を送っています。しかし、この菌の共生環境が形成されるまでの過程についてはよく知られていません。本研究では、微細加工技術を利用して腸内に似た環境を作製し、体内で細菌がいつ、どこで、どのように住み着くのかを観察する手法の開発を目指しています。</p>
+                    <p data-lang-en style="display: none;">The numerous bacteria inhabit in our intestine and they are essential for maintaining our good health. However, the details of the colonization process in a human intestine have not been revealed. In order to investigate when, where, and how bacteria colonize in an intestine, we have been developing a bacterial culture environment similar to the human intestine.</p>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <h2 class="research-title" data-lang-ja>レーザー光を用いた最先端分析技術の研究</h2>
+                <h2 class="research-title" data-lang-en style="display: none;">Advanced Analytical Techniques Using Laser Light</h2>
+                <div class="research-content">
+                    <p data-lang-ja>これまで分析化学の分野では使われていなかった新しいツールと、独自に開発したレーザー光源を組み合わせて、オリジナルの分析技術を研究しています。例えば「分散補償型高フィネス共振器」は、私達が初めて提案した、分析機器の性能を飛躍的に向上する可能性のある仕組みです。このようなアプローチによって、レーザー光を利用した極限の分析技術の開発を目指しています。さらにこれらの手法は、分析技術のみならず、レーザー光を世界最高の速度で変調する(周期的な変化を与える)方法などの、これまでない機能を有するデバイスへの発展も可能です。</p>
+                    <p data-lang-en style="display: none;">We are researching original analytical techniques by combining new tools that have not been used in the field of analytical chemistry with our uniquely developed laser light sources. For example, the "dispersion-compensated high-finesse resonator" is a mechanism that we first proposed, which has the potential to dramatically improve the performance of analytical instruments. Through this approach, we aim to develop cutting-edge analytical techniques using laser light. Furthermore, these methods can be developed into devices with unprecedented functions, not only for analytical techniques but also for methods that modulate laser light at the world's highest speed (applying periodic changes).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p data-lang-ja>&copy; 2025 加地研究室 All Rights Reserved.</p>
+            <p data-lang-en style="display: none;">&copy; 2025 Kaji Laboratory All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            const button = document.querySelector('.language-switcher button');
+            button.textContent = isEnglish ? 'English' : '日本語';
+
+            const logoJa = document.querySelector('.logo[data-lang-ja]');
+            const logoEn = document.querySelector('.logo[data-lang-en]');
+            if (logoJa && logoEn) {
+                logoJa.style.display = isEnglish ? 'block' : 'none';
+                logoEn.style.display = isEnglish ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html> 

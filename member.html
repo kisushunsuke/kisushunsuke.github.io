@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンバーページ - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --hero-bg: #FFE4E1;
+            --research-bg: #E6F3FF;
+            --team-bg: #FFF5E6;
+            --news-bg: #F0FFF0;
+            --blog-bg: #00BFFF;
+            --facilities-bg: #E6E6FA;
+            --gallery-bg: #FFF0F5;
+            --contact-bg: #F0F8FF;
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logout-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .feature-card li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .announcements {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .announcement-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .announcement-date {
+            color: var(--secondary-accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .user-list {
+            list-style: none;
+        }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.3rem 0.5rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .approve-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .reject-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #ff9800;
+            color: white;
+        }
+
+        .admin-only {
+            display: none;
+        }
+
+        .admin .admin-only {
+            display: block;
+        }
+
+        .edit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .edit-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 8/5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .edit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .edit-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .edit-card h3 {
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .staff-photo-editor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .staff-member {
+            text-align: center;
+        }
+
+        .staff-member h5 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .photo-upload {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        .photo-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+        }
+
+        .photo-upload input[type="file"] {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .photo-upload::after {
+            content: "写真を変更";
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-upload:hover::after {
+            opacity: 1;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 10.5rem;
+            z-index: 1001;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-switcher button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="members.html" data-lang-ja>メンバー</a>
+                <a href="members.html" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h2 data-lang-ja>メンバーページへようこそ</h2>
+            <h2 data-lang-en style="display: none;">Welcome to Member Page</h2>
+            <p data-lang-ja>研究室のメンバー専用の情報やリソースにアクセスできます。</p>
+            <p data-lang-en style="display: none;">Access member-only information and resources.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" data-lang-ja>ウェブサイト編集</h2>
+            <h2 class="section-title" data-lang-en style="display: none;">Website Editor</h2>
+            <div class="edit-grid">
+                <div class="edit-card" onclick="showPageEditor('home')">
+                    <i class="fas fa-home"></i>
+                    <h3 data-lang-ja>ホーム</h3>
+                    <h3 data-lang-en style="display: none;">Home</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('research')">
+                    <i class="fas fa-flask"></i>
+                    <h3 data-lang-ja>研究内容</h3>
+                    <h3 data-lang-en style="display: none;">Research</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('member')">
+                    <i class="fas fa-users"></i>
+                    <h3 data-lang-ja>メンバー</h3>
+                    <h3 data-lang-en style="display: none;">Members</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('gallery')">
+                    <i class="fas fa-images"></i>
+                    <h3 data-lang-ja>写真ギャラリー</h3>
+                    <h3 data-lang-en style="display: none;">Gallery</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('events')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3 data-lang-ja>イベント</h3>
+                    <h3 data-lang-en style="display: none;">Events</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('news')">
+                    <i class="fas fa-newspaper"></i>
+                    <h3 data-lang-ja>ニュース</h3>
+                    <h3 data-lang-en style="display: none;">News</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('blog')">
+                    <i class="fas fa-blog"></i>
+                    <h3 data-lang-ja>ブログ</h3>
+                    <h3 data-lang-en style="display: none;">Blog</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('access')">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-lang-ja>アクセス</h3>
+                    <h3 data-lang-en style="display: none;">Access</h3>
+                </div>
+                <div class="edit-card" onclick="showPageEditor('contact')">
+                    <i class="fas fa-envelope"></i>
+                    <h3 data-lang-ja>お問い合わせ</h3>
+                    <h3 data-lang-en style="display: none;">Contact</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 data-lang-ja>研究リソース</h3>
+                <h3 data-lang-en style="display: none;">Research Resources</h3>
+                <ul>
+                    <li data-lang-ja>研究資料データベース</li>
+                    <li data-lang-en style="display: none;">Research Materials Database</li>
+                    <li data-lang-ja>実験プロトコル</li>
+                    <li data-lang-en style="display: none;">Experimental Protocols</li>
+                    <li data-lang-ja>論文データベース</li>
+                    <li data-lang-en style="display: none;">Paper Database</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3 data-lang-ja>スケジュール</h3>
+                <h3 data-lang-en style="display: none;">Schedule</h3>
+                <ul>
+                    <li data-lang-ja>研究室セミナー</li>
+                    <li data-lang-en style="display: none;">Lab Seminars</li>
+                    <li data-lang-ja>ミーティング予定</li>
+                    <li data-lang-en style="display: none;">Meeting Schedule</li>
+                    <li data-lang-ja>設備予約</li>
+                    <li data-lang-en style="display: none;">Equipment Reservation</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3 data-lang-ja>コミュニケーション</h3>
+                <h3 data-lang-en style="display: none;">Communication</h3>
+                <ul>
+                    <li data-lang-ja>メンバー連絡網</li>
+                    <li data-lang-en style="display: none;">Member Contact List</li>
+                    <li data-lang-ja>掲示板</li>
+                    <li data-lang-en style="display: none;">Bulletin Board</li>
+                    <li data-lang-ja>ファイル共有</li>
+                    <li data-lang-en style="display: none;">File Sharing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="announcements">
+            <h3 data-lang-ja>お知らせ</h3>
+            <h3 data-lang-en style="display: none;">Announcements</h3>
+            <div class="announcement-item">
+                <div class="announcement-date">2024-03-15</div>
+                <p data-lang-ja>次回の研究室セミナーは3月20日14:00からです。</p>
+                <p data-lang-en style="display: none;">Next lab seminar will be held on March 20th at 14:00.</p>
+            </div>
+            <div class="announcement-item">
+                <div class="announcement-date">2024-03-10</div>
+                <p data-lang-ja>新規実験機器の使用方法についての説明会を開催します。</p>
+                <p data-lang-en style="display: none;">An explanation session about the new experimental equipment will be held.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>メンバーページ</h1>
+        <div class="user-info">
+            <span id="userName"></span>
+            <button class="logout-btn" onclick="logout()">ログアウト</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">ログイン可能メンバー一覧</h2>
+        <ul class="user-list" id="approvedUsersList">
+            <!-- 承認済みユーザーがここに表示されます -->
+        </ul>
+    </div>
+
+    <div class="section admin-only">
+        <h2 class="section-title">ログイン許可申請一覧</h2>
+        <ul class="user-list" id="pendingUsersList">
+            <!-- 待機中のユーザーがここに表示されます -->
+        </ul>
+    </div>
+
+    <div class="section admin-only">
+        <h2 class="section-title">認証コード設定</h2>
+        <div style="padding: 1rem; background: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div style="margin-bottom: 1rem;">
+                <label for="verificationCode" style="display: block; margin-bottom: 0.5rem;">現在の認証コード: <span id="currentCode" style="font-weight: bold;">111111</span></label>
+                <input type="text" id="verificationCode" placeholder="新しい認証コードを入力" style="padding: 0.5rem; width: 200px; margin-right: 0.5rem;">
+                <button onclick="changeVerificationCode()" style="padding: 0.5rem 1rem; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">認証コードを変更</button>
+            </div>
+            <p style="color: #666; font-size: 0.9rem;">※認証コードは6桁の数字で設定してください。</p>
+        </div>
+    </div>
+
+    <div class="member-section">
+        <h2 data-lang-ja>メンバー情報</h2>
+        <h2 data-lang-en style="display: none;">Member Information</h2>
+        <div id="userProfile" style="margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h3 data-lang-ja>プロフィール編集</h3>
+                <h3 data-lang-en style="display: none;">Edit Profile</h3>
+                <form id="profileForm" onsubmit="updateProfile(event)">
+                    <div style="margin-bottom: 1rem;">
+                        <label data-lang-ja>氏名:</label>
+                        <label data-lang-en style="display: none;">Name:</label>
+                        <input type="text" id="editName" required style="width: 100%; padding: 0.5rem;">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label data-lang-ja>ユーザーID:</label>
+                        <label data-lang-en style="display: none;">User ID:</label>
+                        <input type="text" id="editUserId" required style="width: 100%; padding: 0.5rem;">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label data-lang-ja>新しいパスワード:</label>
+                        <label data-lang-en style="display: none;">New Password:</label>
+                        <input type="password" id="editPassword" style="width: 100%; padding: 0.5rem;">
+                        <small data-lang-ja style="color: #666;">※変更しない場合は空欄のままにしてください</small>
+                        <small data-lang-en style="color: #666; display: none;">※Leave blank if you don't want to change</small>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label data-lang-ja>パスワード（確認）:</label>
+                        <label data-lang-en style="display: none;">Confirm Password:</label>
+                        <input type="password" id="editPasswordConfirm" style="width: 100%; padding: 0.5rem;">
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 1rem;">
+                        <button type="submit" style="background: var(--accent-color); color: white; 
+                            border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;"
+                            data-lang-ja>更新</button>
+                        <button type="submit" style="background: var(--accent-color); color: white; 
+                            border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; display: none;"
+                            data-lang-en>Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-editor">
+        <h2>ページ編集</h2>
+        <div class="editor-buttons">
+            <button onclick="showPageEditor('home')">ホームページ編集</button>
+            <button onclick="showPageEditor('research')">研究内容編集</button>
+            <button onclick="showPageEditor('member')">メンバー編集</button>
+            <button onclick="showPageEditor('gallery')">ギャラリー編集</button>
+            <button onclick="showPageEditor('events')">イベント編集</button>
+            <button onclick="showPageEditor('news')">ニュース編集</button>
+            <button onclick="showPageEditor('blog')">ブログ編集</button>
+            <button onclick="showPageEditor('access')">アクセス編集</button>
+            <button onclick="showPageEditor('contact')">お問い合わせ編集</button>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <p>&copy; 2025 加地研究室 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Google Cloud Translation APIのライブラリを読み込み -->
+    <script src="https://www.googleapis.com/translate/v2?key=YOUR_API_KEY_HERE"></script>
+    <!-- 翻訳機能のスクリプトを読み込み -->
+    <script src="js/translator.js"></script>
+
+    <script>
+        // ページ読み込み時にログイン状態を確認
+        window.onload = function() {
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // ユーザー名を表示
+            document.getElementById('userName').textContent = currentUser.name;
+
+            // 管理者の場合、管理者専用セクションを表示
+            if (currentUser.isAdmin) {
+                document.body.classList.add('admin');
+                // 現在の認証コードを表示
+                const currentCode = localStorage.getItem('verificationCode') || '111111';
+                document.getElementById('currentCode').textContent = currentCode;
+            }
+
+            // ユーザーリストを更新
+            updateUserLists();
+            
+            // 保存されたページコンテンツを読み込む
+            loadAllPageContent();
+        };
+
+        // すべてのページコンテンツを読み込む関数
+        function loadAllPageContent() {
+            const pages = ['home', 'research', 'member', 'gallery', 'events', 'news', 'blog', 'access', 'contact'];
+            pages.forEach(page => {
+                const savedContent = JSON.parse(localStorage.getItem(`pageContent_${page}`) || '{}');
+                if (savedContent.contentJa || savedContent.contentEn) {
+                    // ページコンテンツが存在する場合、更新を記録
+                    const pageUpdates = JSON.parse(localStorage.getItem('pageUpdates') || '{}');
+                    pageUpdates[page] = {
+                        timestamp: new Date().toISOString(),
+                        type: 'content_load'
+                    };
+                    localStorage.setItem('pageUpdates', JSON.stringify(pageUpdates));
+                }
+            });
+        }
+
+        function updateUserLists() {
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
+
+            // プロフィールフォームの更新
+            document.getElementById('editName').value = currentUser.name;
+            document.getElementById('editUserId').value = currentUser.id;
+
+            // 管理者ユーザーと一般ユーザーを分離
+            const adminUsers = approvedUsers.filter(user => user.isAdmin);
+            const regularUsers = approvedUsers.filter(user => !user.isAdmin);
+
+            // 承認済みユーザーリストの更新
+            const approvedUsersList = document.getElementById('approvedUsersList');
+            approvedUsersList.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;" data-lang-ja>管理者</h3>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;" data-lang-en style="display: none;">Administrators</h3>
+                    <ul style="list-style: none; margin-bottom: 1rem;">
+                        ${adminUsers.map(user => `
+                            <li style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                                <span style="font-weight: bold;">${user.name}</span>
+                                <span style="color: #666; margin-left: 1rem;">(${user.id})</span>
+                                <span style="color: gold; margin-left: 0.5rem;">★</span>
+                                ${currentUser.isAdmin ? `
+                                    <div style="float: right;">
+                                        ${currentUser.id === user.id && adminUsers.length > 1 ? `
+                                            <button class="action-btn" onclick="relinquishAdmin('${user.id}')" 
+                                                style="padding: 0.3rem 0.5rem; background: #2196F3; color: white; 
+                                                border: none; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">一般メンバーに戻る</button>
+                                        ` : ''}
+                                        <button class="action-btn delete-btn" onclick="deleteUser('${user.id}')" 
+                                            style="padding: 0.3rem 0.5rem; background: #ff9800; color: white; 
+                                            border: none; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">削除</button>
+                                    </div>
+                                ` : ''}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;" data-lang-ja>一般メンバー</h3>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;" data-lang-en style="display: none;">Regular Members</h3>
+                    <ul style="list-style: none;">
+                        ${regularUsers.map(user => `
+                            <li style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                                <span style="font-weight: bold;">${user.name}</span>
+                                <span style="color: #666; margin-left: 1rem;">(${user.id})</span>
+                                ${currentUser.isAdmin ? `
+                                    <div style="float: right;">
+                                        <button class="action-btn" onclick="grantAdmin('${user.id}')" 
+                                            style="padding: 0.3rem 0.5rem; background: #4CAF50; color: white; 
+                                            border: none; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">管理者に昇格</button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('${user.id}')" 
+                                            style="padding: 0.3rem 0.5rem; background: #ff9800; color: white; 
+                                            border: none; border-radius: 3px; cursor: pointer; margin-left: 0.5rem;">削除</button>
+                                    </div>
+                                ` : ''}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+
+            // 待機ユーザーリストの更新
+            const pendingUsersList = document.getElementById('pendingUsersList');
+            pendingUsersList.innerHTML = currentUser.isAdmin ? pendingUsers.map(user => `
+                <li class="user-item">
+                    <div class="user-info">
+                        <span>${user.name}</span>
+                        <span>(${user.id})</span>
+                        <span>${new Date(user.timestamp).toLocaleString()}</span>
+                    </div>
+                    <div class="admin-actions" style="display: flex;">
+                        <button class="action-btn approve-btn" onclick="approveUser('${user.id}')">承認</button>
+                        <button class="action-btn reject-btn" onclick="rejectUser('${user.id}')">却下</button>
+                    </div>
+                </li>
+            `).join('') : '';
+        }
+
+        function approveUser(userId) {
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            
+            const user = pendingUsers.find(u => u.id === userId);
+            if (user) {
+                // 承認済みユーザーリストに追加
+                approvedUsers.push({
+                    ...user,
+                    isAdmin: false
+                });
+                
+                // 待機リストから削除
+                const updatedPendingUsers = pendingUsers.filter(u => u.id !== userId);
+                
+                // ローカルストレージを更新
+                localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
+                localStorage.setItem('pendingUsers', JSON.stringify(updatedPendingUsers));
+                
+                // リストを更新
+                updateUserLists();
+            }
+        }
+
+        function rejectUser(userId) {
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
+            const updatedPendingUsers = pendingUsers.filter(u => u.id !== userId);
+            localStorage.setItem('pendingUsers', JSON.stringify(updatedPendingUsers));
+            updateUserLists();
+        }
+
+        function deleteUser(userId) {
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            const updatedApprovedUsers = approvedUsers.filter(u => u.id !== userId);
+            localStorage.setItem('approvedUsers', JSON.stringify(updatedApprovedUsers));
+            updateUserLists();
+        }
+
+        function grantAdmin(userId) {
+            if (!confirm('このメンバーを管理者に昇格させますか？')) {
+                return;
+            }
+
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            const userIndex = approvedUsers.findIndex(user => user.id === userId);
+            
+            if (userIndex !== -1) {
+                // 管理者権限を付与
+                approvedUsers[userIndex].isAdmin = true;
+                localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
+                
+                // セッションストレージのユーザー情報も更新（現在のユーザーが昇格された場合）
+                const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+                if (currentUser && currentUser.id === userId) {
+                    currentUser.isAdmin = true;
+                    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    document.body.classList.add('admin'); // 管理者専用セクションを表示
+                    
+                    // 管理者権限の即時反映
+                    const adminSection = document.querySelector('.admin-only');
+                    if (adminSection) {
+                        adminSection.style.display = 'block';
+                    }
+                    
+                    // 管理者機能の有効化
+                    const adminButtons = document.querySelectorAll('.admin-actions');
+                    adminButtons.forEach(button => {
+                        button.style.display = 'flex';
+                    });
+                }
+                
+                updateUserLists();
+                alert('管理者権限を付与しました。以下の権限が付与されました：\n' +
+                      '・メンバーの削除\n' +
+                      '・メンバーの管理者昇格\n' +
+                      '・ログイン待機メンバーの承認/却下');
+            }
+        }
+
+        function relinquishAdmin(userId) {
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            const adminUsers = approvedUsers.filter(user => user.isAdmin);
+            
+            // 最後の管理者の場合は権限を放棄できない
+            if (adminUsers.length <= 1) {
+                alert('最後の管理者は権限を放棄できません。');
+                return;
+            }
+
+            if (!confirm('管理者権限を放棄して一般メンバーに戻りますか？')) {
+                return;
+            }
+
+            const userIndex = approvedUsers.findIndex(user => user.id === userId);
+            if (userIndex !== -1) {
+                // 管理者権限を解除
+                approvedUsers[userIndex].isAdmin = false;
+                localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
+                
+                // セッションストレージのユーザー情報も更新
+                const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+                if (currentUser && currentUser.id === userId) {
+                    currentUser.isAdmin = false;
+                    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    document.body.classList.remove('admin');
+                    
+                    // 管理者機能の無効化
+                    const adminSection = document.querySelector('.admin-only');
+                    if (adminSection) {
+                        adminSection.style.display = 'none';
+                    }
+                    
+                    const adminButtons = document.querySelectorAll('.admin-actions');
+                    adminButtons.forEach(button => {
+                        button.style.display = 'none';
+                    });
+                }
+                
+                updateUserLists();
+                alert('管理者権限を放棄しました。一般メンバーに戻りました。');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+
+        // 言語切り替え機能
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+        }
+
+        function changeVerificationCode() {
+            const newCode = document.getElementById('verificationCode').value;
+            
+            // 入力チェック
+            if (!newCode || !/^\d{6}$/.test(newCode)) {
+                alert('認証コードは6桁の数字で入力してください。');
+                return;
+            }
+
+            if (!confirm('認証コードを変更しますか？\n新しい認証コード: ' + newCode)) {
+                return;
+            }
+
+            // 認証コードを更新
+            localStorage.setItem('verificationCode', newCode);
+            document.getElementById('currentCode').textContent = newCode;
+            document.getElementById('verificationCode').value = '';
+            
+            alert('認証コードを変更しました。\n新しい認証コード: ' + newCode);
+        }
+
+        function updateProfile(event) {
+            event.preventDefault();
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
+
+            const newName = document.getElementById('editName').value;
+            const newUserId = document.getElementById('editUserId').value;
+            const newPassword = document.getElementById('editPassword').value;
+            const confirmPassword = document.getElementById('editPasswordConfirm').value;
+
+            // パスワード変更がある場合は確認
+            if (newPassword && newPassword !== confirmPassword) {
+                alert('パスワードが一致しません。');
+                return;
+            }
+
+            // ユーザーIDの重複チェック
+            if (newUserId !== currentUser.id) {
+                const isDuplicate = approvedUsers.some(user => user.id === newUserId) || 
+                                  pendingUsers.some(user => user.id === newUserId);
+                if (isDuplicate) {
+                    alert('このユーザーIDは既に使用されています。');
+                    return;
+                }
+            }
+
+            // 承認済みユーザーリストの更新
+            const updatedApprovedUsers = approvedUsers.map(user => {
+                if (user.id === currentUser.id) {
+                    return {
+                        ...user,
+                        id: newUserId,
+                        name: newName
+                    };
+                }
+                return user;
+            });
+            localStorage.setItem('approvedUsers', JSON.stringify(updatedApprovedUsers));
+
+            // 待機ユーザーリストの更新
+            const updatedPendingUsers = pendingUsers.map(user => {
+                if (user.id === currentUser.id) {
+                    return {
+                        ...user,
+                        id: newUserId,
+                        name: newName
+                    };
+                }
+                return user;
+            });
+            localStorage.setItem('pendingUsers', JSON.stringify(updatedPendingUsers));
+
+            // セッションストレージの更新
+            sessionStorage.setItem('currentUser', JSON.stringify({
+                ...currentUser,
+                id: newUserId,
+                name: newName
+            }));
+
+            // ユーザーリストの更新
+            updateUserLists();
+
+            alert('プロフィールが更新されました。');
+        }
+
+        // ページ編集モーダルを表示する関数
+        function showPageEditor(page) {
+            const editorModal = document.createElement('div');
+            editorModal.className = 'editor-modal';
+            
+            let editorContent = '';
+            
+            switch(page) {
+                case 'home':
+                    editorContent = `
+                        <h3>ホームページ編集</h3>
+                        <div class="editor-section">
+                            <h4>研究室紹介（メイン）</h4>
+                            <textarea id="mainLabIntroJa" rows="4" placeholder="研究室紹介文を入力してください"></textarea>
+                        </div>
+                        <div class="editor-section">
+                            <h4>研究室紹介（研究内容）</h4>
+                            <textarea id="researchLabIntroJa" rows="4" placeholder="研究内容の詳細な説明文を入力してください"></textarea>
+                        </div>
+                        <div class="editor-section">
+                            <h4>背景画像</h4>
+                            <input type="file" id="bgImage" accept="image/*">
+                        </div>
+                    `;
+                    break;
+                case 'member':
+                    editorContent = `
+                        <h3>メンバー編集</h3>
+                        <div class="editor-section">
+                            <h4>スタッフ写真</h4>
+                            <div class="staff-photo-editor">
+                                <div class="staff-member">
+                                    <h5>加地 範匡</h5>
+                                    <div class="photo-upload">
+                                        <img id="kaji-photo-preview" src="images/kaji.jpg" alt="加地 範匡">
+                                        <input type="file" id="kaji-photo" accept="image/*" onchange="previewImage(this, 'kaji-photo-preview')">
+                                    </div>
+                                </div>
+                                <div class="staff-member">
+                                    <h5>財津 慎一</h5>
+                                    <div class="photo-upload">
+                                        <img id="zaitsu-photo-preview" src="images/zaitsu.jpg" alt="財津 慎一">
+                                        <input type="file" id="zaitsu-photo" accept="image/*" onchange="previewImage(this, 'zaitsu-photo-preview')">
+                                    </div>
+                                </div>
+                                <div class="staff-member">
+                                    <h5>梁 逸偉</h5>
+                                    <div class="photo-upload">
+                                        <img id="leong-photo-preview" src="images/leong.jpg" alt="梁 逸偉">
+                                        <input type="file" id="leong-photo" accept="image/*" onchange="previewImage(this, 'leong-photo-preview')">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                // ... existing cases ...
+            }
+            
+            editorModal.innerHTML = `
+                <div class="editor-content">
+                    <span class="close-button" onclick="this.parentElement.parentElement.remove()">&times;</span>
+                    ${editorContent}
+                    <div class="editor-buttons">
+                        <button onclick="savePageChanges('${page}')">保存</button>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()">キャンセル</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(editorModal);
+            loadCurrentPageContent(page);
+        }
+
+        function previewImage(input, previewId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(previewId).src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function savePageChanges(page) {
+            const savedContent = JSON.parse(localStorage.getItem(`pageContent_${page}`) || '{}');
+            
+            switch(page) {
+                case 'home':
+                    savedContent.mainLabIntroJa = document.getElementById('mainLabIntroJa').value;
+                    savedContent.researchLabIntroJa = document.getElementById('researchLabIntroJa').value;
+                    
+                    const bgImageInput = document.getElementById('bgImage');
+                    if (bgImageInput.files && bgImageInput.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            savedContent.bgImage = e.target.result;
+                            localStorage.setItem(`pageContent_${page}`, JSON.stringify(savedContent));
+                            updatePageContent(page, savedContent);
+                            alert('変更が保存されました。');
+                            document.querySelector('.editor-modal').remove();
+                        };
+                        reader.readAsDataURL(bgImageInput.files[0]);
+                        return;
+                    }
+                    break;
+                case 'member':
+                    const staffPhotos = {
+                        kaji: document.getElementById('kaji-photo-preview').src,
+                        zaitsu: document.getElementById('zaitsu-photo-preview').src,
+                        leong: document.getElementById('leong-photo-preview').src
+                    };
+                    savedContent.staffPhotos = staffPhotos;
+                    break;
+                // ... existing cases ...
+            }
+            
+            localStorage.setItem(`pageContent_${page}`, JSON.stringify(savedContent));
+            updatePageContent(page, savedContent);
+            alert('変更が保存されました。');
+            document.querySelector('.editor-modal').remove();
+        }
+
+        function loadCurrentPageContent(page) {
+            const savedContent = JSON.parse(localStorage.getItem(`pageContent_${page}`) || '{}');
+            
+            switch(page) {
+                case 'home':
+                    if (savedContent.mainLabIntroJa) {
+                        document.getElementById('mainLabIntroJa').value = savedContent.mainLabIntroJa;
+                    }
+                    if (savedContent.researchLabIntroJa) {
+                        document.getElementById('researchLabIntroJa').value = savedContent.researchLabIntroJa;
+                    }
+                    break;
+                case 'member':
+                    if (savedContent.staffPhotos) {
+                        if (savedContent.staffPhotos.kaji) {
+                            document.getElementById('kaji-photo-preview').src = savedContent.staffPhotos.kaji;
+                        }
+                        if (savedContent.staffPhotos.zaitsu) {
+                            document.getElementById('zaitsu-photo-preview').src = savedContent.staffPhotos.zaitsu;
+                        }
+                        if (savedContent.staffPhotos.leong) {
+                            document.getElementById('leong-photo-preview').src = savedContent.staffPhotos.leong;
+                        }
+                    }
+                    break;
+                // ... existing cases ...
+            }
+        }
+
+        // ページ更新を監視する関数
+        function checkPageUpdates() {
+            const pageUpdates = JSON.parse(localStorage.getItem('pageUpdates') || '{}');
+            const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+            
+            if (pageUpdates[currentPage]) {
+                const lastUpdate = new Date(pageUpdates[currentPage].timestamp);
+                const now = new Date();
+                const timeDiff = now - lastUpdate;
+                
+                // 5分以内の更新がある場合、ページをリロード
+                if (timeDiff < 5 * 60 * 1000) {
+                    location.reload();
+                }
+            }
+        }
+
+        // 定期的にページ更新をチェック
+        setInterval(checkPageUpdates, 60000); // 1分ごとにチェック
+    </script>
+</body>
+</html> 

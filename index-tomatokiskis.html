@@ -788,49 +788,6 @@ gennzqai<!DOCTYPE html>
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-
-        .lab-intro-container {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .lab-intro-container h2 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .lab-intro-container p {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .lab-intro {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-color);
-            text-align: left;
-        }
-
-        .member-photo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--accent-color);
-        }
-
-        .member-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
     </style>
 </head>
 <body>
@@ -845,16 +802,18 @@ gennzqai<!DOCTYPE html>
             <div class="nav-links">
                 <a href="index.html" data-lang-ja>ホーム</a>
                 <a href="index.html" data-lang-en style="display: none;">Home</a>
-                <a href="index.html#research" data-lang-ja>研究内容</a>
-                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
-                <a href="members.html" data-lang-ja>メンバー</a>
-                <a href="members.html" data-lang-en style="display: none;">Members</a>
+                <a href="research.html" data-lang-ja>研究内容</a>
+                <a href="research.html" data-lang-en style="display: none;">Research</a>
+                <a href="index.html#team" data-lang-ja>メンバー</a>
+                <a href="index.html#team" data-lang-en style="display: none;">Members</a>
                 <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
                 <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
                 <a href="events.html" data-lang-ja>イベント</a>
                 <a href="events.html" data-lang-en style="display: none;">Events</a>
                 <a href="news.html" data-lang-ja>ニュース</a>
                 <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
                 <a href="index.html#access" data-lang-ja>アクセス</a>
                 <a href="index.html#access" data-lang-en style="display: none;">Access</a>
                 <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
@@ -867,17 +826,11 @@ gennzqai<!DOCTYPE html>
         <div class="hero-content">
             <h1 data-lang-ja>加地研究室</h1>
             <h1 data-lang-en style="display: none;">Kaji Laboratory</h1>
-            <div class="lab-intro" data-section="main">
-                加地研究室では、細胞培養技術、単一細胞・細菌解析法の開発、人工細胞・細胞外小胞の解析、腸内細菌叢研究など、幅広い研究を行っています。
-            </div>
-            <div class="lab-intro-container">
-                <h2 data-lang-ja>研究室紹介文（研究内容）</h2>
-                <h2 data-lang-en style="display: none;">Laboratory Introduction (Research Content)</h2>
-                <p data-lang-ja>※研究内容の詳細な説明文です</p>
-                <p data-lang-en style="display: none;">※Detailed explanation of research content</p>
-                <div class="lab-intro" data-section="research">
-                    半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。
-                </div>
+            <p data-lang-ja>生命科学の最前線で活躍する研究者を育成</p>
+            <p data-lang-en style="display: none;">Cultivating researchers at the forefront of life sciences</p>
+            <div style="margin-top: 2rem; background-color: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p data-lang-en style="display: none;">We are conducting research and development to create new bioanalytical technologies by using micro/nano spaces fabricated with microfabrication technologies in the field of semiconductors as a "field" for the measurement and diagnosis of biological molecules, organelles, and cells. Our goal is to extend the Lab-on-a-Chip (µTAS) analytical technology to a Life-on-a-Chip that can artificially reproduce phenomena of life on a chip and create a next-generation analytical chemistry that can contribute to an understanding of life sciences.</p>
+                <p data-lang-ja>半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。</p>
             </div>
         </div>
     </section>
@@ -932,9 +885,6 @@ gennzqai<!DOCTYPE html>
                     <a href="research.html" class="more-button" data-lang-en style="display: none;">View More</a>
                 </div>
             </div>
-            <div class="lab-intro" data-section="research" style="display: none;">
-                半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。
-            </div>
         </div>
     </section>
 
@@ -945,27 +895,21 @@ gennzqai<!DOCTYPE html>
         </div>
         <div class="team-container">
             <div class="team-member">
-                <div class="member-photo">
-                    <img id="kaji-photo" src="images/kaji.jpg" alt="加地 範匡">
-                </div>
+                <img src="images/kaji.jpg" alt="加地 範匡">
                 <h3 data-lang-ja>加地 範匡</h3>
                 <h3 data-lang-en style="display: none;">Noritada Kaji</h3>
                 <p data-lang-ja>教授<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 403号室<br>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
                 <p data-lang-en style="display: none;">Professor<br>Specialty: Bioanalytical Technology Using Micro/Nano Spaces<br>Office: West3 Room 403<br>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
             </div>
             <div class="team-member">
-                <div class="member-photo">
-                    <img id="zaitsu-photo" src="images/zaitsu.jpg" alt="財津 慎一">
-                </div>
+                <img src="images/zaitsu.jpg" alt="財津 慎一">
                 <h3 data-lang-ja>財津 慎一</h3>
                 <h3 data-lang-en style="display: none;">Shinichi Zaitsu</h3>
                 <p data-lang-ja>准教授<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 402号室<br>Email: zaitsu [at] cstf.kyushu-u.ac.jp</p>
                 <p data-lang-en style="display: none;">Associate Professor<br>Specialty: Bioanalytical Technology Using Micro/Nano Spaces<br>Office: West3 Room 402<br>Email: zaitsu [at] cstf.kyushu-u.ac.jp</p>
             </div>
             <div class="team-member">
-                <div class="member-photo">
-                    <img id="leong-photo" src="images/leong.jpg" alt="梁 逸偉">
-                </div>
+                <img src="images/leong.jpg" alt="梁 逸偉">
                 <h3 data-lang-ja>梁 逸偉</h3>
                 <h3 data-lang-en style="display: none;">Iat Wai Leong</h3>
                 <p data-lang-ja>助教<br>専門：マイクロ・ナノ空間を活用したバイオ分析技術<br>オフィス：West3 410号室<br>Email: leong [at] cstf.kyushu-u.ac.jp</p>
@@ -1417,151 +1361,9 @@ gennzqai<!DOCTYPE html>
             showVerificationForm(userId, name);
         }
 
-        // 保存されたコンテンツを読み込む関数
-        function loadSavedContent() {
-            const savedContent = JSON.parse(localStorage.getItem('pageContent_home') || '{}');
-            
-            // ホームページのコンテンツを更新
-            if (savedContent.mainLabIntroJa) {
-                const mainLabIntro = document.querySelector('.lab-intro[data-section="main"]');
-                if (mainLabIntro) {
-                    mainLabIntro.textContent = savedContent.mainLabIntroJa;
-                }
-            }
-            
-            if (savedContent.researchLabIntroJa) {
-                const researchLabIntro = document.querySelector('.lab-intro[data-section="research"]');
-                if (researchLabIntro) {
-                    researchLabIntro.textContent = savedContent.researchLabIntroJa;
-                }
-            }
-            
-            // 背景画像の更新
-            if (savedContent.bgImage) {
-                const homeSection = document.querySelector('.hero');
-                if (homeSection) {
-                    homeSection.style.backgroundImage = `url(${savedContent.bgImage})`;
-                }
-            }
-
-            // スタッフ写真の更新
-            const memberContent = JSON.parse(localStorage.getItem('pageContent_member') || '{}');
-            if (memberContent.staffPhotos) {
-                if (memberContent.staffPhotos.kaji) {
-                    document.getElementById('kaji-photo').src = memberContent.staffPhotos.kaji;
-                }
-                if (memberContent.staffPhotos.zaitsu) {
-                    document.getElementById('zaitsu-photo').src = memberContent.staffPhotos.zaitsu;
-                }
-                if (memberContent.staffPhotos.leong) {
-                    document.getElementById('leong-photo').src = memberContent.staffPhotos.leong;
-                }
-            }
-        }
-
-        // ページコンテンツを更新する関数
-        function updatePageContent() {
-            const savedContent = JSON.parse(localStorage.getItem('pageContent_home') || '{}');
-            
-            // ホームページの更新
-            if (savedContent.mainLabIntroJa) {
-                const mainLabIntro = document.querySelector('.lab-intro[data-section="main"]');
-                if (mainLabIntro) {
-                    mainLabIntro.textContent = savedContent.mainLabIntroJa;
-                }
-            }
-            
-            if (savedContent.researchLabIntroJa) {
-                const researchLabIntro = document.querySelector('.lab-intro[data-section="research"]');
-                if (researchLabIntro) {
-                    researchLabIntro.textContent = savedContent.researchLabIntroJa;
-                }
-            }
-            
-            // 背景画像の更新
-            if (savedContent.bgImage) {
-                const homeSection = document.querySelector('.hero');
-                if (homeSection) {
-                    homeSection.style.backgroundImage = `url(${savedContent.bgImage})`;
-                }
-            }
-
-            // スタッフ写真の更新
-            const memberContent = JSON.parse(localStorage.getItem('pageContent_member') || '{}');
-            if (memberContent.staffPhotos) {
-                if (memberContent.staffPhotos.kaji) {
-                    document.getElementById('kaji-photo').src = memberContent.staffPhotos.kaji;
-                }
-                if (memberContent.staffPhotos.zaitsu) {
-                    document.getElementById('zaitsu-photo').src = memberContent.staffPhotos.zaitsu;
-                }
-                if (memberContent.staffPhotos.leong) {
-                    document.getElementById('leong-photo').src = memberContent.staffPhotos.leong;
-                }
-            }
-        }
-
         // ページ読み込み時に保存されたコンテンツを読み込む
-        window.addEventListener('load', loadSavedContent);
-
-        // ローカルストレージの変更を監視
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'pageContent_home') {
-                updatePageContent();
-            }
-        });
-
-        // 定期的にコンテンツをチェック
-        setInterval(function() {
-            const savedContent = JSON.parse(localStorage.getItem('pageContent_home') || '{}');
-            const currentContent = {
-                mainLabIntroJa: document.querySelector('.lab-intro[data-section="main"]')?.textContent,
-                researchLabIntroJa: document.querySelector('.lab-intro[data-section="research"]')?.textContent
-            };
-            
-            if (JSON.stringify(savedContent) !== JSON.stringify(currentContent)) {
-                updatePageContent();
-            }
-        }, 1000);
-
-        // ページ更新を監視する関数
-        function checkPageUpdates() {
-            const pageUpdates = JSON.parse(localStorage.getItem('pageUpdates') || '{}');
-            const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
-            
-            if (pageUpdates[currentPage]) {
-                const lastUpdate = new Date(pageUpdates[currentPage].timestamp);
-                const now = new Date();
-                const timeDiff = now - lastUpdate;
-                
-                // 5秒以内の更新がある場合、コンテンツを更新
-                if (timeDiff < 5000) {
-                    const savedContent = JSON.parse(localStorage.getItem(`pageContent_${currentPage}`) || '{}');
-                    updatePageContent(currentPage, savedContent);
-                }
-            }
-        }
-
-        // 定期的にページ更新をチェック
-        setInterval(checkPageUpdates, 1000); // 1秒ごとにチェック
-
-        // ページ読み込み時に保存されたコンテンツを読み込む
-        window.addEventListener('load', function() {
-            loadSavedContent();
-            checkPageUpdates();
-        });
-
-        // ローカルストレージの変更を監視
-        window.addEventListener('storage', function(e) {
-            if (e.key && e.key.startsWith('pageContent_')) {
-                const page = e.key.replace('pageContent_', '');
-                const content = JSON.parse(e.newValue || '{}');
-                updatePageContent(page, content);
-            }
-        });
-
-        // ページ読み込み時に初期管理者ユーザーを追加
-        window.addEventListener('load', function() {
+        window.onload = function() {
+            // 既存の初期管理者ユーザー追加コード
             const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
             const initialAdmin = {
                 id: "kisu.shunsuke.479@s.kyushu-u.ac.jp",
@@ -1574,7 +1376,167 @@ gennzqai<!DOCTYPE html>
                 approvedUsers.push(initialAdmin);
                 localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
             }
-        });
+            
+            // 保存されたコンテンツを読み込む
+            loadSavedContent();
+            // 定期的な更新チェックを開始
+            setInterval(checkPageUpdates, 60000);
+        };
+
+        // 保存されたコンテンツを読み込む関数
+        function loadSavedContent() {
+            const pages = ['home', 'research', 'member', 'gallery', 'events', 'news', 'blog', 'access', 'contact'];
+            pages.forEach(page => {
+                const savedContent = JSON.parse(localStorage.getItem(`pageContent_${page}`) || '{}');
+                if (savedContent.contentJa || savedContent.contentEn) {
+                    updatePageContent(page, savedContent);
+                }
+            });
+        }
+
+        // ページコンテンツを更新する関数
+        function updatePageContent(page, content) {
+            const currentLang = document.documentElement.lang;
+            
+            // ホームページの更新
+            if (page === 'home') {
+                // 研究室紹介文の更新
+                if (content.labIntroJa) {
+                    const introElements = document.querySelectorAll('.hero-content p[data-lang-ja]');
+                    introElements.forEach(el => {
+                        el.textContent = content.labIntroJa;
+                    });
+                }
+                
+                // 背景画像の更新
+                if (content.bgImage) {
+                    const heroSection = document.querySelector('.hero-section');
+                    if (heroSection) {
+                        heroSection.style.backgroundImage = `url(${content.bgImage})`;
+                    }
+                }
+            }
+            
+            // 研究セクションの更新
+            if (page === 'research') {
+                const researchSection = document.querySelector('.research-section');
+                if (researchSection) {
+                    // 背景画像の更新
+                    if (content.bgImage) {
+                        researchSection.style.backgroundImage = `url(${content.bgImage})`;
+                    }
+                    
+                    // 研究カードの更新
+                    const researchCards = researchSection.querySelectorAll('.research-card');
+                    researchCards.forEach((card, index) => {
+                        const cardContent = currentLang === 'ja' ? content.contentJa : content.contentEn;
+                        if (cardContent) {
+                            const cardTitle = card.querySelector('h3');
+                            const cardText = card.querySelector('p');
+                            if (cardTitle && cardText) {
+                                const contentParts = cardContent.split('\n');
+                                if (contentParts[index]) {
+                                    const [title, text] = contentParts[index].split('|');
+                                    if (title) cardTitle.textContent = title.trim();
+                                    if (text) cardText.textContent = text.trim();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            
+            // メイン画像の更新
+            if (content.mainImage) {
+                const mainImages = document.querySelectorAll(`.${page}-section .main-image`);
+                mainImages.forEach(img => {
+                    img.src = content.mainImage;
+                });
+            }
+            
+            // 背景画像の更新
+            if (content.bgImage && page !== 'home') {
+                const bgImages = document.querySelectorAll(`.${page}-section .bg-image`);
+                bgImages.forEach(bg => {
+                    bg.style.backgroundImage = `url(${content.bgImage})`;
+                });
+            }
+            
+            // 言語固有のコンテンツの更新
+            const elementsJa = document.querySelectorAll(`[data-lang-ja][data-page="${page}"]`);
+            const elementsEn = document.querySelectorAll(`[data-lang-en][data-page="${page}"]`);
+            
+            elementsJa.forEach(el => {
+                if (content.contentJa) {
+                    el.innerHTML = content.contentJa;
+                }
+            });
+            
+            elementsEn.forEach(el => {
+                if (content.contentEn) {
+                    el.innerHTML = content.contentEn;
+                }
+            });
+        }
+
+        // 言語切り替え時にコンテンツを更新
+        function toggleLanguage() {
+            const elementsJa = document.querySelectorAll('[data-lang-ja]');
+            const elementsEn = document.querySelectorAll('[data-lang-en]');
+            const isEnglish = elementsJa[0].style.display === 'none';
+            
+            elementsJa.forEach(el => {
+                el.style.display = isEnglish ? 'block' : 'none';
+            });
+            
+            elementsEn.forEach(el => {
+                el.style.display = isEnglish ? 'none' : 'block';
+            });
+
+            // 言語切り替え後にコンテンツを再読み込み
+            loadSavedContent();
+        }
+
+        // ページ更新を監視
+        function checkPageUpdates() {
+            const pageUpdates = JSON.parse(localStorage.getItem('pageUpdates') || '{}');
+            const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+            
+            if (pageUpdates[currentPage]) {
+                const lastUpdate = new Date(pageUpdates[currentPage].timestamp);
+                const now = new Date();
+                const timeDiff = now - lastUpdate;
+                
+                // 5分以内の更新がある場合、コンテンツを再読み込み
+                if (timeDiff < 5 * 60 * 1000) {
+                    loadSavedContent();
+                }
+            }
+        }
+
+        // 研究室紹介モーダルを表示する関数
+        function showLabIntroduction() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button" onclick="this.parentElement.parentElement.remove()">&times;</span>
+                    <h2 data-lang-ja>研究室紹介</h2>
+                    <h2 data-lang-en style="display: none;">Lab Introduction</h2>
+                    <div class="modal-text" data-lang-ja>
+                        <p>加地研究室では、細胞培養技術、単一細胞・細菌解析法の開発、人工細胞・細胞外小胞の解析、腸内細菌叢研究など、幅広い研究を行っています。</p>
+                        <p>私たちの目標は、革新的な技術開発を通じて、生命科学の分野に貢献することです。</p>
+                        <p>研究室では、新しい技術の開発と応用に情熱を持つ学生やポスドクを歓迎します。</p>
+                    </div>
+                    <div class="modal-text" data-lang-en style="display: none;">
+                        <p>At the Kaji Research Group, we conduct a wide range of research including cell culture technology, development of single cell and bacterium analysis techniques, analysis of artificial cells and extracellular vesicles, and intestinal microflora research.</p>
+                        <p>Our goal is to contribute to the field of life sciences through innovative technology development.</p>
+                        <p>We welcome students and postdocs who are passionate about developing and applying new technologies.</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
 
         function handleLogin(event) {
             event.preventDefault();
@@ -1685,39 +1647,6 @@ gennzqai<!DOCTYPE html>
                 return;
             }
         }
-
-        // 研究室紹介モーダルを表示する関数
-        function showLabIntroduction() {
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-button" onclick="this.parentElement.parentElement.remove()">&times;</span>
-                    <h2>研究室紹介</h2>
-                    <div class="modal-text">
-                        <p data-section="main">加地研究室では、細胞培養技術、単一細胞・細菌解析法の開発、人工細胞・細胞外小胞の解析、腸内細菌叢研究など、幅広い研究を行っています。</p>
-                        <p data-section="research">半導体分野における微細加工技術を駆使して作製したマイクロ・ナノ空間を、生体関連物質や細胞の計測・診断の「場」として用いることで、新しいバイオ分析技術を創出すべく研究開発を行っています。最終的にはこのようなLab-on-a-Chip（µTAS）という分析技術をさらに拡張して、生命（生命現象）をチップ上で人工的に再現できるようなLife-on-a-Chipの創成を目指しています。</p>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // ページ読み込み時に初期管理者ユーザーを追加
-        window.addEventListener('load', function() {
-            const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
-            const initialAdmin = {
-                id: "kisu.shunsuke.479@s.kyushu-u.ac.jp",
-                name: "木須 俊介",
-                isAdmin: true
-            };
-
-            // 既に存在しない場合のみ追加
-            if (!approvedUsers.some(user => user.id === initialAdmin.id)) {
-                approvedUsers.push(initialAdmin);
-                localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
-            }
-        });
     </script>
 </body>
 </html>

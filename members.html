@@ -139,7 +139,8 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">加地研究室</div>
+            <div class="logo" data-lang-ja>加地研究室</div>
+            <div class="logo" data-lang-en style="display: none;">Kaji Laboratory</div>
             <div class="nav-links">
                 <a href="index.html" data-lang-ja>ホーム</a>
                 <a href="index.html" data-lang-en style="display: none;">Home</a>
@@ -147,16 +148,12 @@
                 <a href="index.html#research" data-lang-en style="display: none;">Research</a>
                 <a href="members.html" data-lang-ja>メンバー</a>
                 <a href="members.html" data-lang-en style="display: none;">Members</a>
-                <a href="index.html#facilities" data-lang-ja>研究設備</a>
-                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
                 <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
                 <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
-                <a href="index.html#calendar" data-lang-ja>イベント</a>
-                <a href="index.html#calendar" data-lang-en style="display: none;">Events</a>
+                <a href="events.html" data-lang-ja>イベント</a>
+                <a href="events.html" data-lang-en style="display: none;">Events</a>
                 <a href="news.html" data-lang-ja>ニュース</a>
                 <a href="news.html" data-lang-en style="display: none;">News</a>
-                <a href="index.html#blog" data-lang-ja>ブログ</a>
-                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
                 <a href="index.html#access" data-lang-ja>アクセス</a>
                 <a href="index.html#access" data-lang-en style="display: none;">Access</a>
                 <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
@@ -165,14 +162,18 @@
         </div>
     </nav>
 
-    <section id="staff" class="section">
+    <section id="staff" class="section staff-section">
         <div class="section-title">
-            <h2>スタッフ</h2>
-            <p>研究室の教員紹介</p>
+            <h2 data-lang-ja>スタッフ</h2>
+            <h2 data-lang-en style="display: none;">Staff</h2>
+            <p data-lang-ja>研究室の教員紹介</p>
+            <p data-lang-en style="display: none;">Laboratory Staff</p>
         </div>
         <div class="member-grid">
             <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="加地 範匡">
+                <div class="member-photo">
+                    <img src="images/kaji.jpg" alt="加地 範匡">
+                </div>
                 <h3 class="member-name">加地 範匡 (Noritada Kaji)</h3>
                 <p class="member-title">教授</p>
                 <div class="member-info">
@@ -182,159 +183,244 @@
                 </div>
             </div>
             <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="財津 慎一">
+                <div class="member-photo">
+                    <img src="images/zaitsu.jpg" alt="財津 慎一">
+                </div>
                 <h3 class="member-name">財津 慎一 (Shinichi Zaitsu)</h3>
                 <p class="member-title">准教授</p>
                 <div class="member-info">
                     <p>Ph.D.</p>
                     <p>研究室: West3 Room 402</p>
+                    <p>Email: zaitsu [at] cstf.kyushu-u.ac.jp</p>
                 </div>
             </div>
             <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="梁 逸偉">
+                <div class="member-photo">
+                    <img src="images/leong.jpg" alt="梁 逸偉">
+                </div>
                 <h3 class="member-name">梁 逸偉 (Iat Wai Leong)</h3>
                 <p class="member-title">助教</p>
                 <div class="member-info">
                     <p>Ph.D.</p>
                     <p>研究室: West3 Room 410</p>
+                    <p>Email: leong [at] cstf.kyushu-u.ac.jp</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="m2" class="section">
-        <h2 class="category-title">修士2年 (M2)</h2>
-        <div class="member-grid">
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M2学生1">
-                <h3 class="member-name">山田 太郎</h3>
-                <p class="member-title">修士2年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 分子生物学</p>
+    <section id="members" class="section members-section">
+        <div class="section-title">
+            <h2 data-lang-ja>メンバー</h2>
+            <h2 data-lang-en style="display: none;">Members</h2>
+        </div>
+        
+        <div class="members-container">
+            <div class="members-group">
+                <h3 data-lang-ja>大学院生</h3>
+                <h3 data-lang-en style="display: none;">Graduate Students</h3>
+                
+                <h4 data-lang-ja>修士課程</h4>
+                <h4 data-lang-en style="display: none;">Master's students</h4>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/tanaka.jpg" alt="田中 竣也">
+                        </div>
+                        <h4>田中 竣也</h4>
+                        <p>M2</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/tsutsumi.jpg" alt="堤 悠生">
+                        </div>
+                        <h4>堤 悠生</h4>
+                        <p>M2</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/maeda.jpg" alt="前田 陽樹">
+                        </div>
+                        <h4>前田 陽樹</h4>
+                        <p>M2</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/yoshinaga.jpg" alt="義永 晴雲">
+                        </div>
+                        <h4>義永 晴雲</h4>
+                        <p>M2</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/kaneko.jpg" alt="金子 知輝">
+                        </div>
+                        <h4>金子 知輝</h4>
+                        <p>M1</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/watanabe.jpg" alt="渡邉 萌">
+                        </div>
+                        <h4>渡邉 萌</h4>
+                        <p>M1</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/hidaka.jpg" alt="日髙 凌央">
+                        </div>
+                        <h4>日髙 凌央</h4>
+                        <p>M1</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/kunitake.jpg" alt="國竹 裕亮">
+                        </div>
+                        <h4>國竹 裕亮</h4>
+                        <p>M1</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/ishimura.jpg" alt="石村 晃司">
+                        </div>
+                        <h4>石村 晃司</h4>
+                        <p>M1</p>
+                    </div>
                 </div>
             </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M2学生2">
-                <h3 class="member-name">佐藤 花子</h3>
-                <p class="member-title">修士2年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 細胞生物学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M2学生3">
-                <h3 class="member-name">鈴木 一郎</h3>
-                <p class="member-title">修士2年</p>
-                <div class="member-info">
-                    <p>研究テーマ: バイオインフォマティクス</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M2学生4">
-                <h3 class="member-name">田中 健太</h3>
-                <p class="member-title">修士2年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 遺伝子工学</p>
+
+            <div class="members-group">
+                <h3 data-lang-ja>学部生</h3>
+                <h3 data-lang-en style="display: none;">Undergraduates</h3>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/utatsu.jpg" alt="宇田津 良太">
+                        </div>
+                        <h4>宇田津 良太</h4>
+                        <p>B4</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/kisu.jpg" alt="木須 駿介">
+                        </div>
+                        <h4>木須 駿介</h4>
+                        <p>B4</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/tanabe.jpg" alt="田邉 陽奈">
+                        </div>
+                        <h4>田邉 陽奈</h4>
+                        <p>B4</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/shimada.jpg" alt="嶋田 脩悟">
+                        </div>
+                        <h4>嶋田 脩悟</h4>
+                        <p>B4</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="images/members/tashiro.jpg" alt="田代 陽斗">
+                        </div>
+                        <h4>田代 陽斗</h4>
+                        <p>B4</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="m1" class="section">
-        <h2 class="category-title">修士1年 (M1)</h2>
-        <div class="member-grid">
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M1学生1">
-                <h3 class="member-name">中村 優子</h3>
-                <p class="member-title">修士1年</p>
-                <div class="member-info">
-                    <p>研究テーマ: タンパク質解析</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M1学生2">
-                <h3 class="member-name">木村 拓也</h3>
-                <p class="member-title">修士1年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 代謝工学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M1学生3">
-                <h3 class="member-name">高橋 美咲</h3>
-                <p class="member-title">修士1年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 微生物学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M1学生4">
-                <h3 class="member-name">伊藤 翔太</h3>
-                <p class="member-title">修士1年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 免疫学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="M1学生5">
-                <h3 class="member-name">渡辺 真理</h3>
-                <p class="member-title">修士1年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 発生生物学</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <style>
+        .staff-section {
+            padding: 4rem 2rem;
+            background-color: var(--team-bg);
+        }
 
-    <section id="b4" class="section">
-        <h2 class="category-title">学部4年 (B4)</h2>
-        <div class="member-grid">
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="B4学生1">
-                <h3 class="member-name">小林 健一</h3>
-                <p class="member-title">学部4年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 分子遺伝学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="B4学生2">
-                <h3 class="member-name">加藤 優子</h3>
-                <p class="member-title">学部4年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 細胞生物学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="B4学生3">
-                <h3 class="member-name">吉田 大輔</h3>
-                <p class="member-title">学部4年</p>
-                <div class="member-info">
-                    <p>研究テーマ: バイオテクノロジー</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="B4学生4">
-                <h3 class="member-name">中島 美咲</h3>
-                <p class="member-title">学部4年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 生化学</p>
-                </div>
-            </div>
-            <div class="member-card">
-                <img src="https://via.placeholder.com/150" alt="B4学生5">
-                <h3 class="member-name">松本 健太</h3>
-                <p class="member-title">学部4年</p>
-                <div class="member-info">
-                    <p>研究テーマ: 分子生物学</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        .members-section {
+            padding: 4rem 2rem;
+            background-color: var(--team-bg);
+        }
 
-    <div style="text-align: center; margin-top: 2rem;">
-        <a href="members.html" class="see-more-btn">院生・学部生一覧</a>
-    </div>
+        .members-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .members-group {
+            margin-bottom: 3rem;
+        }
+
+        .members-group h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .members-group h4 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-color);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-card h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-card p {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .member-photo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
 
     <footer>
         <div>

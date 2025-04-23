@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンバー紹介 - 加地研究室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --accent-color: #FF69B4;
+            --secondary-accent: #87CEEB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-info {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--secondary-accent);
+            margin: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">加地研究室</div>
+            <div class="nav-links">
+                <a href="index.html" data-lang-ja>ホーム</a>
+                <a href="index.html" data-lang-en style="display: none;">Home</a>
+                <a href="index.html#research" data-lang-ja>研究内容</a>
+                <a href="index.html#research" data-lang-en style="display: none;">Research</a>
+                <a href="members.html" data-lang-ja>メンバー</a>
+                <a href="members.html" data-lang-en style="display: none;">Members</a>
+                <a href="index.html#facilities" data-lang-ja>研究設備</a>
+                <a href="index.html#facilities" data-lang-en style="display: none;">Facilities</a>
+                <a href="gallery.html" data-lang-ja>写真ギャラリー</a>
+                <a href="gallery.html" data-lang-en style="display: none;">Gallery</a>
+                <a href="index.html#calendar" data-lang-ja>イベント</a>
+                <a href="index.html#calendar" data-lang-en style="display: none;">Events</a>
+                <a href="news.html" data-lang-ja>ニュース</a>
+                <a href="news.html" data-lang-en style="display: none;">News</a>
+                <a href="index.html#blog" data-lang-ja>ブログ</a>
+                <a href="index.html#blog" data-lang-en style="display: none;">Blog</a>
+                <a href="index.html#access" data-lang-ja>アクセス</a>
+                <a href="index.html#access" data-lang-en style="display: none;">Access</a>
+                <a href="index.html#contact" data-lang-ja>お問い合わせ</a>
+                <a href="index.html#contact" data-lang-en style="display: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="staff" class="section">
+        <div class="section-title">
+            <h2>スタッフ</h2>
+            <p>研究室の教員紹介</p>
+        </div>
+        <div class="member-grid">
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="加地 範匡">
+                <h3 class="member-name">加地 範匡 (Noritada Kaji)</h3>
+                <p class="member-title">教授</p>
+                <div class="member-info">
+                    <p>Ph.D.</p>
+                    <p>研究室: West3 Room 403</p>
+                    <p>Email: kaji [at] cstf.kyushu-u.ac.jp</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="財津 慎一">
+                <h3 class="member-name">財津 慎一 (Shinichi Zaitsu)</h3>
+                <p class="member-title">准教授</p>
+                <div class="member-info">
+                    <p>Ph.D.</p>
+                    <p>研究室: West3 Room 402</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="梁 逸偉">
+                <h3 class="member-name">梁 逸偉 (Iat Wai Leong)</h3>
+                <p class="member-title">助教</p>
+                <div class="member-info">
+                    <p>Ph.D.</p>
+                    <p>研究室: West3 Room 410</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="m2" class="section">
+        <h2 class="category-title">修士2年 (M2)</h2>
+        <div class="member-grid">
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M2学生1">
+                <h3 class="member-name">山田 太郎</h3>
+                <p class="member-title">修士2年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 分子生物学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M2学生2">
+                <h3 class="member-name">佐藤 花子</h3>
+                <p class="member-title">修士2年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 細胞生物学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M2学生3">
+                <h3 class="member-name">鈴木 一郎</h3>
+                <p class="member-title">修士2年</p>
+                <div class="member-info">
+                    <p>研究テーマ: バイオインフォマティクス</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M2学生4">
+                <h3 class="member-name">田中 健太</h3>
+                <p class="member-title">修士2年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 遺伝子工学</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="m1" class="section">
+        <h2 class="category-title">修士1年 (M1)</h2>
+        <div class="member-grid">
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M1学生1">
+                <h3 class="member-name">中村 優子</h3>
+                <p class="member-title">修士1年</p>
+                <div class="member-info">
+                    <p>研究テーマ: タンパク質解析</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M1学生2">
+                <h3 class="member-name">木村 拓也</h3>
+                <p class="member-title">修士1年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 代謝工学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M1学生3">
+                <h3 class="member-name">高橋 美咲</h3>
+                <p class="member-title">修士1年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 微生物学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M1学生4">
+                <h3 class="member-name">伊藤 翔太</h3>
+                <p class="member-title">修士1年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 免疫学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="M1学生5">
+                <h3 class="member-name">渡辺 真理</h3>
+                <p class="member-title">修士1年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 発生生物学</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="b4" class="section">
+        <h2 class="category-title">学部4年 (B4)</h2>
+        <div class="member-grid">
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="B4学生1">
+                <h3 class="member-name">小林 健一</h3>
+                <p class="member-title">学部4年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 分子遺伝学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="B4学生2">
+                <h3 class="member-name">加藤 優子</h3>
+                <p class="member-title">学部4年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 細胞生物学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="B4学生3">
+                <h3 class="member-name">吉田 大輔</h3>
+                <p class="member-title">学部4年</p>
+                <div class="member-info">
+                    <p>研究テーマ: バイオテクノロジー</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="B4学生4">
+                <h3 class="member-name">中島 美咲</h3>
+                <p class="member-title">学部4年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 生化学</p>
+                </div>
+            </div>
+            <div class="member-card">
+                <img src="https://via.placeholder.com/150" alt="B4学生5">
+                <h3 class="member-name">松本 健太</h3>
+                <p class="member-title">学部4年</p>
+                <div class="member-info">
+                    <p>研究テーマ: 分子生物学</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="members.html" class="see-more-btn">院生・学部生一覧</a>
+    </div>
+
+    <footer>
+        <div>
+            <p>&copy; 2025 加地研究室 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

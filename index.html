@@ -1586,43 +1586,37 @@ gennzqai<!DOCTYPE html>
             const approvedUsers = JSON.parse(localStorage.getItem('approvedUsers') || '[]');
             const approvedUser = approvedUsers.find(user => user.id === userId);
 
+            // 待機中のユーザーリストを確認
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
+            const pendingUser = pendingUsers.find(user => user.id === userId);
+
             if (approvedUser) {
-                // セッションストレージにユーザー情報を保存
+                // 承認済みユーザーの場合
                 sessionStorage.setItem('currentUser', JSON.stringify({
                     id: userId,
                     name: approvedUser.name,
                     isAdmin: approvedUser.isAdmin || false
                 }));
-                
-                // メンバーページにリダイレクト
+                window.location.href = "member.html";
+            } else if (pendingUser) {
+                // 待機中のユーザーの場合、管理者として承認
+                const newAdminUser = {
+                    id: pendingUser.id,
+                    name: pendingUser.name,
+                    isAdmin: true
+                };
+                approvedUsers.push(newAdminUser);
+                localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
+
+                // 待機リストから削除
+                const updatedPendingUsers = pendingUsers.filter(u => u.id !== userId);
+                localStorage.setItem('pendingUsers', JSON.stringify(updatedPendingUsers));
+
+                // セッションストレージにユーザー情報を保存
+                sessionStorage.setItem('currentUser', JSON.stringify(newAdminUser));
                 window.location.href = "member.html";
             } else {
-                // 初回ログインの場合は管理者として承認
-                const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers') || '[]');
-                const pendingUser = pendingUsers.find(user => user.id === userId);
-
-                if (pendingUser) {
-                    // 承認済みユーザーリストに追加（管理者として）
-                    const newAdminUser = {
-                        id: pendingUser.id,
-                        name: pendingUser.name,
-                        isAdmin: true
-                    };
-                    approvedUsers.push(newAdminUser);
-                    localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
-
-                    // 待機リストから削除
-                    const updatedPendingUsers = pendingUsers.filter(u => u.id !== userId);
-                    localStorage.setItem('pendingUsers', JSON.stringify(updatedPendingUsers));
-
-                    // セッションストレージにユーザー情報を保存
-                    sessionStorage.setItem('currentUser', JSON.stringify(newAdminUser));
-                    
-                    // メンバーページにリダイレクト
-                    window.location.href = "member.html";
-                } else {
-                    alert('ログインに失敗しました。');
-                }
+                alert('ログインに失敗しました。ユーザーIDまたはパスワードが正しくありません。');
             }
         }
 
